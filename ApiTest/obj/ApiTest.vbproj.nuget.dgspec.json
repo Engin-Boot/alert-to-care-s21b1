@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {}
+    "D:\\github\\alert-to-care-s21b1\\ApiTest\\ApiTest.vbproj": {}
   },
   "projects": {
-    "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {
+    "D:\\github\\alert-to-care-s21b1\\ApiTest\\ApiTest.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj",
-        "projectName": "AlertToCareAPI",
-        "projectPath": "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj",
+        "projectUniqueName": "D:\\github\\alert-to-care-s21b1\\ApiTest\\ApiTest.vbproj",
+        "projectName": "ApiTest",
+        "projectPath": "D:\\github\\alert-to-care-s21b1\\ApiTest\\ApiTest.vbproj",
         "packagesPath": "C:\\Users\\udayh\\.nuget\\packages\\",
-        "outputPath": "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\obj\\",
+        "outputPath": "D:\\github\\alert-to-care-s21b1\\ApiTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\udayh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,24 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -48,9 +66,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
