@@ -7,7 +7,6 @@ C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\ne
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\netcoreapp3.1\AlertToCareAPI.runtimeconfig.dev.json
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\netcoreapp3.1\AlertToCareAPI.dll
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\netcoreapp3.1\AlertToCareAPI.pdb
-C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csprojAssemblyReference.cache
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.AssemblyInfoInputs.cache
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.AssemblyInfo.cs
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csproj.CoreCompileInputs.cache
