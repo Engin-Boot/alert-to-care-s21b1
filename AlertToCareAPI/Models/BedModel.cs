@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace AlertToCareAPI.Models
 {
-    public class Bed
+    public class BedModel
     {
         private readonly string[] _allowedValueForStatus = new string[]{"Occupied", "Free"};
-        public Bed(string id, string status)
+        public BedModel(string id, string status)
         {
             this.BedId = id;
             this.BedOccupancyStatus = status;

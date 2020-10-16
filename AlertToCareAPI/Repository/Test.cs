@@ -8,16 +8,16 @@ namespace AlertToCareAPI.Repository
 {
     public class Test:ITest
     {
-        List<Bed> beds = new List<Bed>();
+        readonly List<BedModel> _beds = new List<BedModel>();
 
         public Test()
         {
-            beds.Add(new Bed("132","Free"));
-            beds.Add(new Bed("123", "Occupied"));
+            _beds.Add(new BedModel("132","Free"));
+            _beds.Add(new BedModel("123", "Occupied"));
         }
-        public IEnumerable<Bed> GetAllBeds()
+        public IEnumerable<BedModel> GetAllBeds()
         {
-            return beds;
+            return _beds;
         }
     }
 }

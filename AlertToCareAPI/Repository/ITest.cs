@@ -8,6 +8,6 @@ namespace AlertToCareAPI.Repository
 {
     public interface ITest
     {
-        IEnumerable<Bed> GetAllBeds();
+        IEnumerable<BedModel> GetAllBeds();
     }
 }

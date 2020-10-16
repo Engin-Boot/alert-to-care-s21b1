@@ -22,7 +22,7 @@ namespace AlertToCareAPI.Controllers
 
         // GET: api/<BedsController>
         [HttpGet]
-        public IEnumerable<Bed> Get()
+        public IEnumerable<BedModel> Get()
         {
             return _test.GetAllBeds();
         }
