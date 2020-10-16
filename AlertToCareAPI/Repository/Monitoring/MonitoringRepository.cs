@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AlertToCareAPI.Models;
+using AlertToCareAPI.Utility;
 
 namespace AlertToCareAPI.Repository
 {
     public class MonitoringRepository
     {
+
+        readonly PatientVitalValidator _patientVitalValidator;
         //readonly Data _db = new Data();
         readonly List<VitalsModel> _patientVitals;
         readonly float[] bpmLimits = { 70, 150 };
@@ -43,7 +46,8 @@ namespace AlertToCareAPI.Repository
 
         public string CheckVital(VitalsModel vital)
         {
-            
+
+            _patientVitalValidator.VitalValidator(vital);
             var bpm_vital = VitalChecker.Invoke("bpm", vital.Bpm, bpmLimits);
             var spo2_vital = VitalChecker.Invoke("spo2", vital.Spo2, spo2Limits);
             var respRate_vital = VitalChecker.Invoke("respRate", vital.RespRate, respRateLimits);
