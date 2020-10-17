@@ -12,8 +12,8 @@ namespace AlertToCareAPI.Repository
 
         public Test()
         {
-            _beds.Add(new BedModel("132","Free"));
-            _beds.Add(new BedModel("123", "Occupied"));
+           // _beds.Add(new BedModel("132","Free"));
+           // _beds.Add(new BedModel("123", "Occupied"));
         }
         public IEnumerable<BedModel> GetAllBeds()
         {
