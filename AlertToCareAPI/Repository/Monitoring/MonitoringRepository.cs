@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AlertToCareAPI.Models;
 using AlertToCareAPI.Utility;
 
 namespace AlertToCareAPI.Repository.Monitoring
 {
-    public class MonitoringRepository
+    public class MonitoringRepository : IMonitoringRepository
     {
 
         //readonly PatientVitalValidator _patientVitalValidator;
@@ -55,7 +56,48 @@ namespace AlertToCareAPI.Repository.Monitoring
         //    return result;
         //}
 
+        private readonly AppDbContext _context;
+        readonly PatientVitalValidator _patientVitalValidator = new PatientVitalValidator();
+        public MonitoringRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
+        public void AddNewVital(VitalsModel vital)
+        {
+            //_patientVitalValidator.VitalValidator(vital);--------------validatation
+            _context.Vitals.Add(vital);
+            _context.SaveChanges(); //save in db
+        }
 
+        public VitalsModel FetchVital(string vitalName)
+        {
+            //BasicValidator.basicValid.Invoke(vitalName);---cehck vital name
+            var name = _context.Vitals.FirstOrDefault(vit => vit.Name == vitalName);
+            return name;
+        }
+
+        public string Alarm(string vitalName)
+        {
+            //BasicValidator.basicValid.Invoke(vitalName);---cehck vital name
+            string msg = "";
+            var name = _context.Vitals.FirstOrDefault(vit => vit.Name == vitalName);
+            if (name.Value < name.LowerLimit)
+            {
+                return msg = vitalName + "--" + " Alerting IS LOW";
+            }
+            else
+            {
+                if (name.Value > name.UpperLimit)
+                {
+                    return msg = vitalName + "--" + "Alerting IS HIGH";
+                }
+                else
+                {
+                    return msg = vitalName + "--" + "ALL OKAY";
+                }
+            }
+         
+        }
     }
 }

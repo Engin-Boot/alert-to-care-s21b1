@@ -10,6 +10,7 @@ namespace AlertToCareAPI.Models
     {
         [Key]
         public string Name { get; set; }
+        
         public float Value { get; set; }
         public float LowerLimit { get; set; }
         public float UpperLimit { get; set; }

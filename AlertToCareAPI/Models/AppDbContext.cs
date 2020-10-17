@@ -11,6 +11,8 @@ namespace AlertToCareAPI.Models
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<IcuModel> Icu { get; set; }
         public DbSet<PatientModel> Patients { get; set; }
+
+        public DbSet<VitalsModel> Vitals { get; set; }
     }
     
     //protected override void OnModelCreating()
