@@ -13,28 +13,37 @@ namespace AlertToCareAPI.Repository.Occupancy
         public OccupancyServices(AppDbContext context)
         {
             _context = context;
-            _context.Patients.Add(new PatientModel()
-            {
-                Name = "jay",
-                Age = 22,
-                Address = "Chevella",
-                BedId = "L013",
-                IcuId = "ICU01",
-                PatientId = "002",
-                Vitals = null
-            });
-            _context.SaveChanges();
+            //_context.Patients.Add(new PatientModel()
+            //{
+            //    Name = "jay",
+            //    Age = 22,
+            //    Address = "Chevella",
+            //    BedId = "L013",
+            //    IcuId = "ICU01",
+            //    PatientId = "002",
+            //    Vitals = null
+            //});
+            //_context.SaveChanges();
             //foreach (var patient in _context.Patients)
             //{
-            //    Console.WriteLine("Patient Name:"+patient.Name);
+            //    Console.WriteLine("Patient Name:" + patient.Name);
             //}
         }
 
         public string AddIcu(IcuModel newIcu)
         {
-            _context.Icu.Add(newIcu);
-            _context.SaveChanges();
-            return "ICU Added";
+            try
+            {
+                _context.Icu.Add(newIcu);
+                _context.SaveChanges();
+                return "ICU Added";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return "Unable to add Icu to DB";
+            }
+            
         }
 
         public string AddBed(string icuId, BedModel newBed)
@@ -70,29 +79,6 @@ namespace AlertToCareAPI.Repository.Occupancy
 
         public IEnumerable<PatientModel> GetAllPatients()
         {
-            //_context.Patients.Add(new PatientModel()
-            //{
-            //    Name = "Ajay",
-            //    Age = 22,
-            //    Address = "Chevella",
-            //    BedId = "L012",
-            //    IcuId = "ICU01",
-            //    PatientId = "001",
-            //    Vitals = null
-            //});
-            //if (_context.Patients == null)
-            //{
-            //    Console.WriteLine("Null");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Not Null"+_context.Patients.Find("001").Name);
-            //}
-            //foreach (var patient in _context.Patients)
-            //{
-            //    Console.WriteLine("Patient Name:"+patient.Name);
-            //}
-            Console.WriteLine("In Fun");
             return _context.Patients.ToList();
         }
 

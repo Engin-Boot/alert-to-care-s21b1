@@ -13,5 +13,7 @@ namespace AlertToCareAPI.Models
         public float Value { get; set; }
         public float LowerLimit { get; set; }
         public float UpperLimit { get; set; }
+
+
     }
 }
