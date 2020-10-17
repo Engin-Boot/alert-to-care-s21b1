@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlertToCareAPI", "AlertToCareAPI\AlertToCareAPI.csproj", "{26F4AB25-291E-4DC3-B006-A7BBF7BD1570}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ApiTest", "ApiTest\ApiTest.vbproj", "{10FB787F-EB54-409B-A14E-4FC17C8A34F6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
