@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {}
+    "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {}
   },
   "projects": {
-    "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {
+    "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj",
         "projectName": "AlertToCareAPI",
-        "projectPath": "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj",
-        "packagesPath": "C:\\Users\\udayh\\.nuget\\packages\\",
-        "outputPath": "D:\\github\\alert-to-care-s21b1\\AlertToCareAPI\\obj\\",
+        "projectPath": "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj",
+        "packagesPath": "C:\\Users\\Ajay kumar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\udayh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ajay kumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
