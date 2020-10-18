@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlertToCareAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201016153217_IntialMigration")]
-    partial class IntialMigration
+    [Migration("20201018082444_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -100,7 +100,7 @@ namespace AlertToCareAPI.Migrations
 
                     b.HasIndex("PatientModelPatientId");
 
-                    b.ToTable("VitalsModel");
+                    b.ToTable("Vitals");
                 });
 
             modelBuilder.Entity("AlertToCareAPI.Models.BedModel", b =>

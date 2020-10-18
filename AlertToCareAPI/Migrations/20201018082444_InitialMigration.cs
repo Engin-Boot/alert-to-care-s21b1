@@ -2,7 +2,7 @@
 
 namespace AlertToCareAPI.Migrations
 {
-    public partial class IntialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,7 +56,7 @@ namespace AlertToCareAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VitalsModel",
+                name: "Vitals",
                 columns: table => new
                 {
                     Name = table.Column<string>(nullable: false),
@@ -67,9 +67,9 @@ namespace AlertToCareAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VitalsModel", x => x.Name);
+                    table.PrimaryKey("PK_Vitals", x => x.Name);
                     table.ForeignKey(
-                        name: "FK_VitalsModel_Patients_PatientModelPatientId",
+                        name: "FK_Vitals_Patients_PatientModelPatientId",
                         column: x => x.PatientModelPatientId,
                         principalTable: "Patients",
                         principalColumn: "PatientId",
@@ -82,8 +82,8 @@ namespace AlertToCareAPI.Migrations
                 column: "IcuModelIcuId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VitalsModel_PatientModelPatientId",
-                table: "VitalsModel",
+                name: "IX_Vitals_PatientModelPatientId",
+                table: "Vitals",
                 column: "PatientModelPatientId");
         }
 
@@ -93,7 +93,7 @@ namespace AlertToCareAPI.Migrations
                 name: "BedModel");
 
             migrationBuilder.DropTable(
-                name: "VitalsModel");
+                name: "Vitals");
 
             migrationBuilder.DropTable(
                 name: "Icu");

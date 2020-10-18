@@ -98,7 +98,7 @@ namespace AlertToCareAPI.Migrations
 
                     b.HasIndex("PatientModelPatientId");
 
-                    b.ToTable("VitalsModel");
+                    b.ToTable("Vitals");
                 });
 
             modelBuilder.Entity("AlertToCareAPI.Models.BedModel", b =>
