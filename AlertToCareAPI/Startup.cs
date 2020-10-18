@@ -35,6 +35,9 @@ namespace AlertToCareAPI
             //    options.UseSqlServer(Configuration.GetConnectionString("DataBaseConnection")));
             services.AddControllers();
             services.AddSingleton<Repository.ITest, Repository.Test>();
+
+            services.AddScoped<Repository.Monitoring.IMonitoringRepository, Repository.Monitoring.MonitoringRepository>();
+            
             services.AddScoped<Repository.Occupancy.IOccupancyServices, Repository.Occupancy.OccupancyServices>();
         }
 
