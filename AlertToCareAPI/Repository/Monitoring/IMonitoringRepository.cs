@@ -1,11 +1,17 @@
-﻿using AlertToCareAPI.Models;
+﻿using System.Collections.Generic;
+using AlertToCareAPI.Models;
 
 namespace AlertToCareAPI.Repository.Monitoring
 {
     public interface IMonitoringRepository
     {
-        void AddNewVital(VitalsModel vital);
-        string Alarm(string vitalName);
-        VitalsModel FetchVital(string vitalName);
+
+        List<PatientModel> AllPatientVitalWithDetails();
+        List<VitalsModel> PatientVital(string patientId);
+        void TurnOffAlert(string bedId);
+        //Dictionary<string, string> TurnOnAlert();
+        List<BedOnAlert> TurnOnAlert();
+
+        List<BedOnAlert> UpdateVital(string patietId, float bpmvalue, float spo2value, float respRatevalue);
     }
 }

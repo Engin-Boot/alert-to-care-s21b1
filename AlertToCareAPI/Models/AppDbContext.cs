@@ -13,7 +13,10 @@ namespace AlertToCareAPI.Models
         public DbSet<PatientModel> Patients { get; set; }
 
         public DbSet<VitalsModel> Vitals { get; set; }
+
+        public DbSet<BedOnAlert> Beds { get; set; }
+
     }
-    
+
     //protected override void OnModelCreating()
 }
