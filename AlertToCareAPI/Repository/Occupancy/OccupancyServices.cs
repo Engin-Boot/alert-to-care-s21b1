@@ -16,7 +16,9 @@ namespace AlertToCareAPI.Repository.Occupancy
         {
             _context = context;
         }
-                                                                            // Add update vitals in maintanance. 
+
+
+        // Add update vitals in maintanance. 
         public string AddIcu(IcuModel newIcu)
         {
             try
@@ -34,7 +36,8 @@ namespace AlertToCareAPI.Repository.Occupancy
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                return "Failed to add";
+                return e.StackTrace;
+               // return "Failed to add";
             }
             
         }
