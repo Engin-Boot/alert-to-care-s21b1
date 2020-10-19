@@ -161,4 +161,3 @@ C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\ne
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.dll
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.pdb
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.genruntimeconfig.cache
-C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csprojAssemblyReference.cache

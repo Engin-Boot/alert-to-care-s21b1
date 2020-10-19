@@ -78,7 +78,12 @@ namespace AlertToCareAPI.Repository.Occupancy
                 if (IsEmptySlotAvailableToAddBed(icuId , out message))
                 {
                     var icu = _context.Icu.Find(icuId);
-                    icu.Beds.Add(new BedModel() { /*   Add relavent BedId and Occupancy     */});
+                    icu.Beds.Add(new BedModel()
+                    {
+                        BedId = GenetateBedId(icu),
+                        BedOccupancyStatus = "Free",
+                        Location = "not specified"
+                    });
                     icu.NoOfBeds += 1;
                     _context.SaveChanges();
                     return "New Bed Added";
@@ -90,6 +95,11 @@ namespace AlertToCareAPI.Repository.Occupancy
                 Console.WriteLine(e.StackTrace);
                 return "Failed to add";
             }
+        }
+
+        private string GenetateBedId(IcuModel icu)
+        {
+            throw new NotImplementedException();
         }
 
         public string RemoveBed(string icuId, string bedId)
@@ -333,7 +343,7 @@ namespace AlertToCareAPI.Repository.Occupancy
                 return false;
             }
             string message;
-            if (IsBedAvailable(newPatient.IcuId, newPatient.BedId, out message))
+            if (IsBedAvailable(newPatient.IcuId, newPatient.BedId, out message))    // add vitals validation
             {
                 msg = "Patient can be Added";
             }
