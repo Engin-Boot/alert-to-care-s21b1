@@ -252,7 +252,7 @@ namespace AlertToCareAPI.Repository.Occupancy
 
         public bool ValidateBeds(IcuModel icu)
         {
-            if (icu.Beds != null && icu.MaxBeds != 0 && icu.NoOfBeds == icu.Beds.Count)  // check layout with BedId
+            if (icu.MaxBeds != 0 && icu.NoOfBeds == icu.Beds.Count)  // check layout with BedId
             {
                 return true;
             }
