@@ -174,25 +174,29 @@ namespace AlertToCareAPI.Repository.Monitoring
 
             for (int i = 0; i < patVitalList.Count; i++)
             {
-                if (patVitalList[i].Name == "Bpm")
-                {
-
-                    patVitalList[i].Value = bpmvalue;
-                    _context.SaveChanges();
-                }
-                else
-                    if (patVitalList[i].Name == "Spo2")
-                {
-                    patVitalList[i].Value = spo2value;
-                    _context.SaveChanges();
-                }
-                else
-                    patVitalList[i].Value = respRatevalue;
-                _context.SaveChanges();
-
+                AssigningVital(patVitalList[i], bpmvalue, spo2value, respRatevalue);
             }
             var vitalList = TurnOnAlert();
             return vitalList;
+        }
+
+        public void AssigningVital(VitalsModel vital,float bpmvalue,float spo2value,float respRatevalue)
+        {
+            if (vital.Name == "Bpm")
+            {
+
+                vital.Value = bpmvalue;
+                _context.SaveChanges();
+            }
+            else
+                    if (vital.Name == "Spo2")
+            {
+                vital.Value = spo2value;
+                _context.SaveChanges();
+            }
+            else
+                vital.Value = respRatevalue;
+            _context.SaveChanges();
         }
 
         //public Dictionary<string, string> TurnOnAlert()
