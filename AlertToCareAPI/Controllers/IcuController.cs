@@ -96,6 +96,21 @@ namespace AlertToCareAPI.Controllers
 
         }
 
+        [HttpPost("beds/addBed/{icuId}/{location}")]
+        public IActionResult AddBedWithLocation(string icuId, string location)
+        {
+            try
+            {
+                string msg = occupancyServices.AddBed(icuId,location);
+                return Ok(msg);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "unable to add Bed");
+            }
+
+        }
+
         [HttpDelete("beds/remove/{icuId}/{bedId}")]
         public IActionResult RemoveBed(string icuId, string bedId)
         {

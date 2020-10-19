@@ -9,7 +9,7 @@ namespace AlertToCareAPI.Repository.Occupancy
     public interface IOccupancyServices
     {
         string AddIcu(IcuModel newIcu);
-        string AddBed(string icuId);
+        string AddBed(string icuId, string locationOfBed = "not specified");
         string AddPatient(PatientModel newPatient);
         string DischargePatient(string patientId);
         string RemoveIcu(string icuId);

@@ -69,7 +69,7 @@ namespace AlertToCareAPI.Repository.Occupancy
             return _context.Icu.Find(id);
         }
 
-        public string AddBed(string icuId)            // Give BedId = IcuId + Layout + BedId
+        public string AddBed(string icuId, string locationOfBed= "not specified")
         {
             try
             {
@@ -82,7 +82,7 @@ namespace AlertToCareAPI.Repository.Occupancy
                     {
                         BedId = GenetateBedId(icu),
                         BedOccupancyStatus = "Free",
-                        Location = "not specified"
+                        Location = locationOfBed
                     });
                     icu.NoOfBeds += 1;
                     _context.SaveChanges();
@@ -99,7 +99,9 @@ namespace AlertToCareAPI.Repository.Occupancy
 
         private string GenetateBedId(IcuModel icu)
         {
-            throw new NotImplementedException();
+            string id = icu.IcuId;
+            id += icu.Layout + (icu.NoOfBeds + 1).ToString();
+            return id;
         }
 
         public string RemoveBed(string icuId, string bedId)
@@ -239,12 +241,21 @@ namespace AlertToCareAPI.Repository.Occupancy
                 message = "Icu with same id exists";
                 return false;
             }
-            else if(icu.Beds!=null && icu.MaxBeds!=0 && icu.NoOfBeds == icu.Beds.Count)  // check layout with BedId
+            else if(ValidateBeds(icu))  // check layout with BedId
             {
                 message = "Icu can be added";
                 return true;
             }
             message = "ICU doesn't meet the conditions to be added";
+            return false;
+        }
+
+        public bool ValidateBeds(IcuModel icu)
+        {
+            if (icu.Beds != null && icu.MaxBeds != 0 && icu.NoOfBeds == icu.Beds.Count)  // check layout with BedId
+            {
+                return true;
+            }
             return false;
         }
 
