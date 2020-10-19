@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AlertToCareAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/monitoring/[controller]")]
     [ApiController]
     public class MonitoringController : ControllerBase
     {
@@ -22,59 +22,124 @@ namespace AlertToCareAPI.Controllers
             this._monitoringRepository = repository;
         }
 
+        //GET:
+
+        [HttpGet]
+        public IEnumerable<PatientModel> Get()
+        {
+            return _monitoringRepository.AllPatientVitalWithDetails();
+        }
+
+
+        [HttpGet("id")]
+        public List<VitalsModel> Get(string id)
+        {
+            return _monitoringRepository.PatientVital(id);
+        }
+
+        //[HttpGet("Alert")]
+        //public Dictionary<string, string> Alert()
+        //{
+        //    return _monitoringRepository.TurnOnAlert();
+        //}
+
+        [HttpGet("Alert")]
+        public List<BedOnAlert> Alert()
+        {
+            return _monitoringRepository.TurnOnAlert();
+        }
+
+
+
+        [HttpPost("Alert/{bedId}")]
+        public IActionResult AlertOff(string bedId)
+        {
+            if (bedId == null)
+            {
+                return BadRequest("INVALID BED ID");
+            }
+            try
+            {
+                _monitoringRepository.TurnOffAlert(bedId);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+            return Ok();
+        }
+
+
+        [HttpPut("UpdateVital/{patientId}/{bpmvalue}/{spo2value}/{respRatevalue}")]
+        public List<BedOnAlert> Put(string patientId, float bpmvalue, float spo2value, float respRatevalue)
+        {
+            if (patientId == null)
+            {
+                throw new Exception("INVALID PATIENT ID");
+
+            }
+            try
+            {
+                return _monitoringRepository.UpdateVital(patientId, bpmvalue, spo2value, respRatevalue);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         // GET: api/<MonitoringController>
-        
         //[HttpGet]
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };
         //}
 
-        // GET api/<MonitoringController>/5
-        [HttpGet("vitalName")]
-        public VitalsModel Get(string vitalName)
-        {
-            try
-            {
-                return _monitoringRepository.FetchVital(vitalName);
-            }
-            catch
-            {
-                throw  new Exception("no found");
-            }
-        }
+        //// GET api/<MonitoringController>/5
+        //[HttpGet("vitalName")]
+        //public VitalsModel Get(string vitalName)
+        //{
+        //    try
+        //    {
+        //        return _monitoringRepository.FetchVital(vitalName);
+        //    }
+        //    catch
+        //    {
+        //        throw  new Exception("no found");
+        //    }
+        //}
 
-        // POST api/<MonitoringController>
-        [HttpPost("VitalName")]
-        public IActionResult AddNewVital([FromBody] VitalsModel vital)
-        {
-            
-            try
-            {
-                _monitoringRepository.AddNewVital(vital);
-            }
-            catch(Exception)
-            {
-                return StatusCode(500, "unable to insert new vital");
-            }
+        //// POST api/<MonitoringController>
+        //[HttpPost("VitalName")]
+        //public IActionResult AddNewVital([FromBody] VitalsModel vital)
+        //{
 
-            return Ok("Insert successful");
-        }
+        //    try
+        //    {
+        //        _monitoringRepository.AddNewVital(vital);
+        //    }
+        //    catch(Exception)
+        //    {
+        //        return StatusCode(500, "unable to insert new vital");
+        //    }
 
-        // PUT api/<MonitoringController>/5
-        [HttpGet("Alert")]
-        public string Alerting([FromBody] string vitalName)
-        {
-            try
-            {
-               return _monitoringRepository.Alarm(vitalName);
-            }
-            catch(Exception)
-            {
-                return "unable to find it";
+        //    return Ok("Insert successful");
+        //}
 
-            }
-        }
+        //// PUT api/<MonitoringController>/5
+        //[HttpGet("Alert")]
+        //public string Alerting([FromBody] string vitalName)
+        //{
+        //    try
+        //    {
+        //       return _monitoringRepository.Alarm(vitalName);
+        //    }
+        //    catch(Exception)
+        //    {
+        //        return "unable to find it";
+
+        //    }
+        //}
 
 
 
