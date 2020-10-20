@@ -36,6 +36,21 @@ namespace AlertToCareAPITests.Repository
             };
             #endregion
 
+            #region Vitals
+
+            var patient1Vitals = new List<VitalsModel>() {
+                new VitalsModel(){ Name = "Resp", Value = 80, LowerLimit = 70, UpperLimit = 150 },
+                new VitalsModel(){ Name = "Bp", Value = 80, LowerLimit = 80, UpperLimit = 150 },
+                new VitalsModel(){ Name = "Spo2", Value = 80, LowerLimit = 90, UpperLimit = 100 },
+            };
+            var patient2Vitals = new List<VitalsModel>() {
+                new VitalsModel(){ Name = "Resp", Value = 80, LowerLimit = 70, UpperLimit = 150 },
+                new VitalsModel(){ Name = "Bp", Value = 80, LowerLimit = 80, UpperLimit = 150 },
+                new VitalsModel(){ Name = "Spo2", Value = 80, LowerLimit = 90, UpperLimit = 100 },
+            };
+
+            #endregion
+
             #region ICU's
             var icu1 = new IcuModel()
             {
@@ -65,7 +80,7 @@ namespace AlertToCareAPITests.Repository
                 Address = "Hyderabad",
                 IcuId = "ICU01",
                 BedId = "ICU01L001",
-                Vitals = null
+                Vitals = patient1Vitals
             };
 
             var patient2 = new PatientModel()
@@ -76,19 +91,11 @@ namespace AlertToCareAPITests.Repository
                 Address = "Hyderabad",
                 IcuId = "ICU01",
                 BedId = "ICU01L003",
-                Vitals = null
+                Vitals = patient2Vitals
             };
             #endregion
 
-            #region Vitals
-
-            var patient1Vitals = new List<VitalsModel>() 
-            { };
-            var patient2Vitals = new List<VitalsModel>() 
-            { };
-
-            #endregion
-
+            
             context.Icu.Add(icu1);
             context.Icu.Add(icu2);
             context.Patients.Add(patient1);
