@@ -1,6 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d6f255cf_002Dc131_002D472e_002Da8b2_002D41cd776c0479/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="OccupancyServicesTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::A50ED9F8-7E57-46EF-8ABB-D41F7423DA5E::.NETCoreApp,Version=v3.1::AlertToCareAPI.Repository.Occupancy.Tests.OccupancyServicesTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A50ED9F8-7E57-46EF-8ABB-D41F7423DA5E::.NETCoreApp,Version=v3.1::AlertToCareAPI.Repository.Occupancy.Tests.OccupancyServicesIcuTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

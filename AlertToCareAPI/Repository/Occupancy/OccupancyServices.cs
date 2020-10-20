@@ -47,13 +47,14 @@ namespace AlertToCareAPI.Repository.Occupancy
             try
             {
                 // validation
-                if (DoesIcuExists(icuId))    // Check for patients if no patirnts then remove
+                string message;
+                if (CanIcuBeRemoved(icuId, out message))    // Check for patients if no patirnts then remove
                 {
                     _context.Icu.Remove(_context.Icu.Find(icuId));
                     _context.SaveChanges();
                     return "Removed";
                 }
-                return "No such ICU";
+                return message;
             }
             catch (Exception e)
             {
@@ -81,15 +82,16 @@ namespace AlertToCareAPI.Repository.Occupancy
                 if (IsEmptySlotAvailableToAddBed(icuId , out message))
                 {
                     var icu = _context.Icu.Find(icuId);
+                    var bedId = GenetateBedId(icu);
                     icu.Beds.Add(new BedModel()
                     {
-                        BedId = GenetateBedId(icu),
+                        BedId = bedId,
                         BedOccupancyStatus = "Free",
                         Location = locationOfBed
                     });
                     icu.NoOfBeds += 1;
                     _context.SaveChanges();
-                    return "New Bed Added";
+                    return "New Bed Added..! BedId: " + bedId;
                 }
                 return message;
             }
@@ -137,7 +139,7 @@ namespace AlertToCareAPI.Repository.Occupancy
             var allIcus = _context.Icu;
             foreach (var icu in allIcus)
             {
-                freeBeds.AddRange(AvailableBeds(icu.IcuId));
+                freeBeds.AddRange(AvailableBeds(icu.IcuId).ToList());
             }
             return freeBeds;
         }
@@ -146,6 +148,10 @@ namespace AlertToCareAPI.Repository.Occupancy
         {
             List<BedModel> freeBeds = new List<BedModel>();
             var icu = GetIcu(icuId);
+            if (icu == null)
+            {
+                return freeBeds;
+            }
             var beds = icu.Beds;
             foreach (var bed in beds)
             {
@@ -253,9 +259,47 @@ namespace AlertToCareAPI.Repository.Occupancy
             return false;
         }
 
+        public bool CanIcuBeRemoved(string icuId, out string message)
+        {
+            if (!DoesIcuExists(icuId))
+            {
+                message = "Icu with doesn't exists";
+                return false;
+            }
+            else if (CheckIfPatientsExistsInIcu(icuId))  
+            {
+                message = "Icu has patients, Cannot remove icu";
+                return false;
+            }
+            message = "ICU can be Removed safely";
+            return true;
+        }
+
+        public bool CheckIfPatientsExistsInIcu(string icuId)
+        {
+            var patients = GetAllPatients();
+            foreach(var patient in patients)
+            {
+                if(patient.IcuId == icuId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public bool ValidateBeds(IcuModel icu)
         {
-            if (icu.MaxBeds != 0 && icu.NoOfBeds == icu.Beds.Count)  // check layout with BedId
+            if (icu.MaxBeds != 0 && CheckBedsCriteria(icu))  // check layout with BedId
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckBedsCriteria(IcuModel icu)
+        {
+            if (icu.Beds!=null && icu.NoOfBeds == icu.Beds.Count)  // check layout with BedId
             {
                 return true;
             }
@@ -289,7 +333,7 @@ namespace AlertToCareAPI.Repository.Occupancy
             {
                 if (IsBedOccupied(GetBed(icuId, bedId)))
                 {
-                    msg = "Bed is already occupied";
+                    msg = "Bed is occupied";
                     return false;
                 }
                 msg = "Bed is free";
