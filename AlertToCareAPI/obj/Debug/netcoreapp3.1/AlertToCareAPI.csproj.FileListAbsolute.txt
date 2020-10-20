@@ -70,8 +70,6 @@ C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\ne
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.AssemblyInfoInputs.cache
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.AssemblyInfo.cs
-C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csproj.CoreCompileInputs.cache
-C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.RazorTargetAssemblyInfo.cache
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csproj.CopyComplete
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\staticwebassets\AlertToCareAPI.StaticWebAssets.Manifest.cache
@@ -161,3 +159,6 @@ D:\github\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\staticwebas
 D:\github\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.dll
 D:\github\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.pdb
 D:\github\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.genruntimeconfig.cache
+C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csproj.CoreCompileInputs.cache
+C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.MvcApplicationPartsAssemblyInfo.cache

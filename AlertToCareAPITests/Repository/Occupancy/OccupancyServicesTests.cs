@@ -7,13 +7,14 @@ using Xunit;
 
 namespace AlertToCareAPI.Repository.Occupancy.Tests
 {
-    public class OccupancyServicesTests
+    public class OccupancyServicesTests : AlertToCareAPITests.Repository.InMemoryContext
     {
-        OccupancyServices occupancyServices = new OccupancyServices();
+        //readonly OccupancyServices occupancyServices = new 
         [Fact]
         public void AddIcuTest()
         {
-            string actual = occupancyServices.AddIcu(new Models.IcuModel()
+            var occupancyServices = new OccupancyServices(Context);
+            string actual = occupancyServices.AddIcu(new IcuModel()
             {
                 IcuId = "ICU05",
                 Layout = "L00",

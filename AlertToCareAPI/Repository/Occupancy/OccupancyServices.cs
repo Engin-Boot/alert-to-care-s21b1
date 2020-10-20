@@ -36,8 +36,8 @@ namespace AlertToCareAPI.Repository.Occupancy
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
-                return e.StackTrace;
-               // return "Failed to add";
+                //return e.StackTrace;
+                return "Failed to add";
             }
             
         }
