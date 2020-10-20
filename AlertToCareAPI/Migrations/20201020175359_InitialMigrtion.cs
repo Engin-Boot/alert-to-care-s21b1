@@ -2,10 +2,23 @@
 
 namespace AlertToCareAPI.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigrtion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Beds",
+                columns: table => new
+                {
+                    BedId = table.Column<string>(nullable: false),
+                    Value = table.Column<float>(nullable: false),
+                    Message = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Beds", x => x.BedId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Icu",
                 columns: table => new
@@ -42,6 +55,7 @@ namespace AlertToCareAPI.Migrations
                 {
                     BedId = table.Column<string>(nullable: false),
                     BedOccupancyStatus = table.Column<string>(nullable: true),
+                    Location = table.Column<string>(nullable: true),
                     IcuModelIcuId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -56,35 +70,32 @@ namespace AlertToCareAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vitals",
+                name: "VitalsModel",
                 columns: table => new
                 {
-                    Name = table.Column<string>(nullable: false),
+                    PatientModelPatientId = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
                     Value = table.Column<float>(nullable: false),
                     LowerLimit = table.Column<float>(nullable: false),
-                    UpperLimit = table.Column<float>(nullable: false),
-                    PatientModelPatientId = table.Column<string>(nullable: true)
+                    UpperLimit = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vitals", x => x.Name);
+                    table.PrimaryKey("PK_VitalsModel", x => new { x.PatientModelPatientId, x.Id });
                     table.ForeignKey(
-                        name: "FK_Vitals_Patients_PatientModelPatientId",
+                        name: "FK_VitalsModel_Patients_PatientModelPatientId",
                         column: x => x.PatientModelPatientId,
                         principalTable: "Patients",
                         principalColumn: "PatientId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_BedModel_IcuModelIcuId",
                 table: "BedModel",
                 column: "IcuModelIcuId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Vitals_PatientModelPatientId",
-                table: "Vitals",
-                column: "PatientModelPatientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -93,7 +104,10 @@ namespace AlertToCareAPI.Migrations
                 name: "BedModel");
 
             migrationBuilder.DropTable(
-                name: "Vitals");
+                name: "Beds");
+
+            migrationBuilder.DropTable(
+                name: "VitalsModel");
 
             migrationBuilder.DropTable(
                 name: "Icu");

@@ -96,30 +96,6 @@ namespace AlertToCareAPI.Migrations
                     b.ToTable("Patients");
                 });
 
-            modelBuilder.Entity("AlertToCareAPI.Models.VitalsModel", b =>
-                {
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<float>("LowerLimit")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("PatientModelPatientId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<float>("UpperLimit")
-                        .HasColumnType("REAL");
-
-                    b.Property<float>("Value")
-                        .HasColumnType("REAL");
-
-                    b.HasKey("Name");
-
-                    b.HasIndex("PatientModelPatientId");
-
-                    b.ToTable("Vitals");
-                });
-
             modelBuilder.Entity("AlertToCareAPI.Models.BedModel", b =>
                 {
                     b.HasOne("AlertToCareAPI.Models.IcuModel", null)
@@ -127,11 +103,36 @@ namespace AlertToCareAPI.Migrations
                         .HasForeignKey("IcuModelIcuId");
                 });
 
-            modelBuilder.Entity("AlertToCareAPI.Models.VitalsModel", b =>
+            modelBuilder.Entity("AlertToCareAPI.Models.PatientModel", b =>
                 {
-                    b.HasOne("AlertToCareAPI.Models.PatientModel", null)
-                        .WithMany("Vitals")
-                        .HasForeignKey("PatientModelPatientId");
+                    b.OwnsMany("AlertToCareAPI.Models.VitalsModel", "Vitals", b1 =>
+                        {
+                            b1.Property<string>("PatientModelPatientId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<float>("LowerLimit")
+                                .HasColumnType("REAL");
+
+                            b1.Property<string>("Name")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<float>("UpperLimit")
+                                .HasColumnType("REAL");
+
+                            b1.Property<float>("Value")
+                                .HasColumnType("REAL");
+
+                            b1.HasKey("PatientModelPatientId", "Id");
+
+                            b1.ToTable("VitalsModel");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PatientModelPatientId");
+                        });
                 });
 #pragma warning restore 612, 618
         }

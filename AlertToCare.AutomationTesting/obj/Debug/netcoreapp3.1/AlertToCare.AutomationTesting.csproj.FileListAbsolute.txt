@@ -1,0 +1,8 @@
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\bin\Debug\netcoreapp3.1\AlertToCare.AutomationTesting.exe
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\obj\Debug\netcoreapp3.1\AlertToCare.AutomationTesting.AssemblyInfoInputs.cache
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\obj\Debug\netcoreapp3.1\AlertToCare.AutomationTesting.AssemblyInfo.cs
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\obj\Debug\netcoreapp3.1\AlertToCare.AutomationTesting.csproj.CopyComplete
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\obj\Debug\netcoreapp3.1\AlertToCare.AutomationTesting.csprojAssemblyReference.cache
+D:\github\alert-to-care-s21b1\AlertToCare.AutomationTesting\obj\Debug\netcoreapp3.1\AlertToCare.AutomationTesting.csproj.CoreCompileInputs.cache

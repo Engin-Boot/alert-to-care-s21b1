@@ -162,3 +162,5 @@ D:\github\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCare
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csproj.CoreCompileInputs.cache
 C:\Users\Ajay kumar\source\repos\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\github\alert-to-care-s21b1\AlertToCareAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\github\alert-to-care-s21b1\AlertToCareAPI\obj\Debug\netcoreapp3.1\AlertToCareAPI.csprojAssemblyReference.cache

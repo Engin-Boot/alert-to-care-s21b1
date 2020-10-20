@@ -31,10 +31,11 @@ namespace AlertToCareAPI.Controllers
         }
 
 
-        [HttpGet("id")]
-        public List<VitalsModel> Get(string id)
+        [HttpGet("Patientid")]
+        public List<VitalsModel> Get(string Patientid)
         {
-            return _monitoringRepository.PatientVital(id);
+
+            return _monitoringRepository.PatientVital(Patientid);
         }
 
         //[HttpGet("Alert")]
@@ -44,9 +45,9 @@ namespace AlertToCareAPI.Controllers
         //}
 
         [HttpGet("Alert")]
-        public List<BedOnAlert> Alert()
+        public IActionResult Alert()
         {
-            return _monitoringRepository.TurnOnAlert();
+            return Ok(_monitoringRepository.TurnOnAlert());
         }
 
 
@@ -71,20 +72,21 @@ namespace AlertToCareAPI.Controllers
 
 
         [HttpPut("UpdateVital/{patientId}/{bpmvalue}/{spo2value}/{respRatevalue}")]
-        public List<BedOnAlert> Put(string patientId, float bpmvalue, float spo2value, float respRatevalue)
+        public ActionResult<IEnumerable<dynamic>> Put(string patientId, float bpmvalue, float spo2value, float respRatevalue)
         {
             if (patientId == null)
             {
-                throw new Exception("INVALID PATIENT ID");
+                return BadRequest("INVALID INPUT OF ID");
 
             }
             try
             {
-                return _monitoringRepository.UpdateVital(patientId, bpmvalue, spo2value, respRatevalue);
+                return Ok(_monitoringRepository.UpdateVital(patientId, bpmvalue, spo2value, respRatevalue));
             }
             catch
             {
-                return null;
+                return StatusCode(500, "unable to insert patient information");
+
             }
         }
 

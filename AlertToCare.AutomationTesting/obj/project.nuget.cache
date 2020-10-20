@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TYUasFDiM1d4R7+kBCmi3e61Bs2Bif0dtKKM9sC/sackt5TQcgXa9F2NuOPZr0rEKZGT9wppjkCFm2loA68rLQ==",
+  "success": true,
+  "projectFilePath": "D:\\github\\alert-to-care-s21b1\\AlertToCare.AutomationTesting\\AlertToCare.AutomationTesting.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\udayh\\.nuget\\packages\\mstest.testframework\\2.1.0\\mstest.testframework.2.1.0.nupkg.sha512",
+    "C:\\Users\\udayh\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512"
+  ],
+  "logs": []
+}
