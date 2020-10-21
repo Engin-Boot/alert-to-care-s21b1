@@ -13,12 +13,9 @@ namespace AlertToCareAPI.Models
         public DbSet<IcuModel> Icu { get; set; }
         public DbSet<PatientModel> Patients { get; set; }
 
-        //public DbSet<VitalsModel> Vitals { get; set; }
+        public DbSet<VitalsModel> Vitals { get; set; }
 
         public DbSet<BedOnAlert> Beds { get; set; }
-
-        
-
     }
 
 }
