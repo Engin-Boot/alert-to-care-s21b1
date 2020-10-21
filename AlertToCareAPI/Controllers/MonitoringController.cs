@@ -52,7 +52,7 @@ namespace AlertToCareAPI.Controllers
 
 
 
-        [HttpPost("Alert/{bedId}")]
+        [HttpDelete("Alert/{bedId}")]
         public IActionResult AlertOff(string bedId)
         {
             if (bedId == null)
