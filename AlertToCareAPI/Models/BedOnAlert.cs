@@ -11,9 +11,6 @@ namespace AlertToCareAPI.Models
         [Key]
         public string BedId { get; set; }
         public float Value { get; set; }
-
         public string Message { get; set; }
-
-
     }
 }
