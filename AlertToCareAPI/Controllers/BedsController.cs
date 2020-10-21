@@ -13,25 +13,26 @@ namespace AlertToCareAPI.Controllers
     [ApiController]
     public class BedsController : ControllerBase
     {
-        private readonly Repository.ITest _test;
+        private readonly Repository.Occupancy.IOccupancyServices _occupancy;
 
-        public BedsController(Repository.ITest test)
+        public BedsController(Repository.Occupancy.IOccupancyServices occupancy)
         {
-            this._test = test;
+            this._occupancy = occupancy;
         }
 
         // GET: api/<BedsController>
         [HttpGet]
         public IEnumerable<BedModel> Get()
         {
-            return _test.GetAllBeds();
+            return _occupancy.AvailableBeds();
         }
 
         // GET api/<BedsController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            //return _occupancy;
+            return "random";
         }
 
         // POST api/<BedsController>

@@ -34,7 +34,7 @@ namespace AlertToCareAPI
             //services.AddDbContextPool<AppDbContext>(options => 
             //    options.UseSqlServer(Configuration.GetConnectionString("DataBaseConnection")));
             services.AddControllers();
-            services.AddSingleton<Repository.ITest, Repository.Test>();
+            //services.AddSingleton<Repository.ITest, Repository.Test>();
 
             services.AddScoped<Repository.Monitoring.IMonitoringRepository, Repository.Monitoring.MonitoringRepository>();
             

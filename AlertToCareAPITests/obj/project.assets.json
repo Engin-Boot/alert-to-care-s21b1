@@ -8715,19 +8715,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ajay kumar\\.nuget\\packages\\": {}
+    "C:\\Users\\TOSHIBA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPITests\\AlertToCareAPITests.csproj",
+      "projectUniqueName": "E:\\BootCamp\\NewFolder\\alert-to-care-s21b1\\AlertToCareAPITests\\AlertToCareAPITests.csproj",
       "projectName": "AlertToCareAPITests",
-      "projectPath": "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPITests\\AlertToCareAPITests.csproj",
-      "packagesPath": "C:\\Users\\Ajay kumar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPITests\\obj\\",
+      "projectPath": "E:\\BootCamp\\NewFolder\\alert-to-care-s21b1\\AlertToCareAPITests\\AlertToCareAPITests.csproj",
+      "packagesPath": "C:\\Users\\TOSHIBA\\.nuget\\packages\\",
+      "outputPath": "E:\\BootCamp\\NewFolder\\alert-to-care-s21b1\\AlertToCareAPITests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ajay kumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TOSHIBA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8740,8 +8740,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {
-              "projectPath": "C:\\Users\\Ajay kumar\\source\\repos\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj"
+            "E:\\BootCamp\\NewFolder\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj": {
+              "projectPath": "E:\\BootCamp\\NewFolder\\alert-to-care-s21b1\\AlertToCareAPI\\AlertToCareAPI.csproj"
             }
           }
         }
@@ -8800,7 +8800,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
