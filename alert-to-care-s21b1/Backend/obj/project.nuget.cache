@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gu4kaDVaHc+SCUn8IR3T5E2oLWZNPf1izIF9l5vDhyt9C7tK2zEwCYhSmbpLuBLcP0uzWQffswh0460a60QNoA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\DummyRepository\\alert-to-care-s21b1\\Backend\\Backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ALIRAZA\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Frontend.AllIcus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Frontend"
+             mc:Ignorable="d" 
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
+    <DockPanel>
+        <Button Content="Back" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="10" FontSize="20" Click="BackButton_Click"></Button>
+        <Grid>
+            <TextBlock Text="Select ICU" FontSize="20" Margin="180 20 0 10" FontWeight="Bold"></TextBlock>
+            <ListView x:Name="IcuIDListView" DockPanel.Dock="Left" Margin="180 100 100 10" VerticalAlignment="Top" HorizontalAlignment="Center"
+                  Width="120" Height="Auto" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                  SelectionChanged="IcuIDList_Selected" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Visible"></ListView>
+        </Grid>
+        <StackPanel>
+            <TextBlock Text="ICU Details" FontSize="20" Margin="10 20 0 40" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.Children>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Icu ID:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Layout:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Max Beds:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Beds Present:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Free Beds:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="icuId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="layout" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" x:Name="maxBeds" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" x:Name="bedsPresent" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1" x:Name="freeBeds" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+            </Grid.Children>
+            
+        </Grid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

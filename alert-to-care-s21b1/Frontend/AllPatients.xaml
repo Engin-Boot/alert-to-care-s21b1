@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Frontend.AllPatients"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Frontend"
+             mc:Ignorable="d" 
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
+    <DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Top" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10" Click="BackButton_Click"></Button>
+        <StackPanel   DockPanel.Dock="Left" Margin="90 90 30 150" HorizontalAlignment="Center">
+            <TextBlock Text="Select PatientId: " FontSize="20" Margin="15"></TextBlock>
+            <ComboBox x:Name="patientIdList" ItemsSource="{Binding Path=PatientIdList}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="250"
+                      FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                      SelectionChanged="patientIdList_SelectionChanged"></ComboBox>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Right">
+            <TextBlock Text="Patient Details" HorizontalAlignment="Center" Margin="50 20 0 50" FontSize="20" FontWeight="Bold"></TextBlock>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.Children>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="PatientId:  " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Icu ID:  " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Bed Id: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Name: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Age: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Address: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Gender: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Contact: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                   
+                    <TextBlock Grid.Row="0" Grid.Column="1" x:Name="patientId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="1" x:Name="icuId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="1" x:Name="bedId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="1" x:Name="name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="1" x:Name="age" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="1" x:Name="address" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="1" x:Name="gender" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                    <TextBlock Grid.Row="7" Grid.Column="1" x:Name="contact" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+                </Grid.Children>
+
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

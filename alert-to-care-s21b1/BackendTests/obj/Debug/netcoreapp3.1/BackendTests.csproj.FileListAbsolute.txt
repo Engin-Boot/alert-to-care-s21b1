@@ -1,0 +1,4 @@
+E:\BootCamp\Dummy\alert-to-care-s21b1\BackendTests\obj\Debug\netcoreapp3.1\BackendTests.csprojAssemblyReference.cache
+E:\BootCamp\Dummy\alert-to-care-s21b1\BackendTests\obj\Debug\netcoreapp3.1\BackendTests.AssemblyInfoInputs.cache
+E:\BootCamp\Dummy\alert-to-care-s21b1\BackendTests\obj\Debug\netcoreapp3.1\BackendTests.AssemblyInfo.cs
+E:\BootCamp\Dummy\alert-to-care-s21b1\BackendTests\obj\Debug\netcoreapp3.1\BackendTests.csproj.CoreCompileInputs.cache

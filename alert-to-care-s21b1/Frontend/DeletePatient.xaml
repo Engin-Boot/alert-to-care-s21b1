@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Frontend.DeletePatient"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Frontend"
+             xmlns:validationrules="clr-namespace:Frontend.Validations"
+             mc:Ignorable="d" 
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
+    <DockPanel>
+        <Button x:Name="backButton" Content="Back" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="70" Height="30" FontSize="20" Margin="10" Click="backButton_Click"></Button>
+        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="40" Text="Discharge Patient" FontWeight="Bold" Margin="30" ></TextBlock>
+        <StackPanel HorizontalAlignment="Center" Margin="100 150 100 100">
+            <TextBlock Text="Select PatientId: " FontSize="20" Margin="20"></TextBlock>
+            <ComboBox x:Name="patientIdList" ItemsSource="{Binding Path=PatientIdList}" FontSize="20"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource ResourceKey=errorFeedbackStyle}">
+                <ComboBox.Text>
+                    <Binding Path="PatientId" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" >
+                        <Binding.ValidationRules>
+                            <validationrules:AddIcuFieldValidations ValidatesOnTargetUpdated="True"></validationrules:AddIcuFieldValidations>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
+            </ComboBox>
+            <Button x:Name="deleteButton" Content="Discharge" Click="deleteButton_Click" Margin="40" Width="120" Height="30" FontSize="20">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=patientIdList}" Value="False"/>
+                                    
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        
+        
+    </DockPanel>
+</UserControl>

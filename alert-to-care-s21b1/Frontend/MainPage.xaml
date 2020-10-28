@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Frontend.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Frontend"
+             mc:Ignorable="d" 
+             d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}" d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}">
+    
+    <DockPanel LastChildFill="True">
+        <Border x:Name="leftBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Left" Background="Beige" >
+            <StackPanel>
+                <Button Name="Menu" Padding="2" Content="Menu" Margin="20" VerticalAlignment="Top" FontSize="20" Click="Menu_Click"></Button>
+                <local:MenuControl Visibility="Collapsed" x:Name="MenuOptions" Margin="10"></local:MenuControl>
+            </StackPanel>
+        </Border>
+        <Border x:Name="bottomBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Bottom" Background="Beige">
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
+                <TextBlock Text="Change ICU" FontSize="18" Foreground="Black"></TextBlock>
+                <ComboBox x:Name="icuComboBox" ItemsSource="{Binding Path=IcuIdList}" SelectionChanged="Icu_Changed" Foreground="Black" Height="30" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+            </StackPanel>
+        </Border>
+        <Border x:Name="rightBorder" BorderBrush="Beige" BorderThickness="2" DockPanel.Dock="Right" Background="Beige">
+            <StackPanel DockPanel.Dock="Right">
+                <Button x:Name="ViewAll"  Content="View All" Margin="20" VerticalAlignment="Top" FontSize="20" Click="ViewAll_Click"></Button>
+                <local:ViewAllControl Visibility="Collapsed" x:Name="ViewAllOptions" Margin="10"></local:ViewAllControl>
+            </StackPanel>
+        </Border>
+        <Border x:Name="topBorder" BorderBrush="beige" BorderThickness="2" DockPanel.Dock="Top" Background="Beige">
+            <StackPanel DockPanel.Dock="Top" Height="100"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical" Margin="80 10 10 10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="IcuId : " Margin="10 10 60 10" FontSize="18" Foreground="Black" ClipToBounds="True"></TextBlock>
+                        <TextBox x:Name="icuId" IsReadOnly="True" Text="{Binding Path=IcuId, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 10 40 10" FontSize="16" Width="70" Height="30"></TextBox>
+                        <TextBlock Text="MaxBeds :" Margin="10 10 25 5" FontSize="18" Foreground="Black"></TextBlock>
+                        <TextBox x:Name="maxBeds" IsReadOnly="True" Text="{Binding Path=MaxBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="15 10 20 10" FontSize="16" Width="70" Height="30"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="PresentBeds:" Margin="5 10 5 5 " FontSize="18" Foreground="Black"></TextBlock>
+                        <TextBox x:Name="noOfBeds" IsReadOnly="True" Text="{Binding Path=NoOfBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="25 10 30 10"  FontSize="16" Width="70" Height="30"></TextBox>
+                        <TextBlock Text="Freebeds:" Margin="20 10 5 5" FontSize="18" Foreground="Black"></TextBlock>
+                        <TextBox x:Name="freeBeds" IsReadOnly="True" Text="{Binding Path=FreeBeds, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="35 10 20 10" FontSize="16" Width="70" Height="30"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+                
+            </StackPanel>
+        </Border>
+                        
+        <DockPanel x:Name="BedDock" VerticalAlignment="Center" HorizontalAlignment="Center" LastChildFill="False">
+            <StackPanel x:Name="V1StackPanel" Orientation="Vertical" Margin="5 0 0 0"></StackPanel>
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="HStackPanel" Orientation="Horizontal" Margin="0"></StackPanel>
+            <StackPanel  x:Name="V2StackPanel" Orientation="Vertical" Margin="0"></StackPanel>
+        </DockPanel>
+
+        
+    </DockPanel>
+</UserControl>
