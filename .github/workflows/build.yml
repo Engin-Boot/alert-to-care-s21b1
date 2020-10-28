@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: alert-to-care-s21b1\alert-to-care-s21b1.sln 
+      Solution_Name: alert-to-care-s21b1.sln 
  
     steps:
     - name: Checkout
@@ -24,4 +24,4 @@ jobs:
       run: dotnet build --configuration Release
         
     - name: Run unit tests
-      run: dotnet test --no-build --configuration Release alert-to-care-s21b1\BackendApiTests\BackendApiTests.csproj
+      run: dotnet test --no-build --configuration Release BackendApiTests\BackendApiTests.csproj
