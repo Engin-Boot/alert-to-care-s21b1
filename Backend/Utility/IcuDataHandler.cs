@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Backend.Utility
 {
@@ -22,7 +21,7 @@ namespace Backend.Utility
             }
             return allIcus;
         }
-        public Models.IcuModel FormatStringToIcuObject(string[] icuDetails)
+        private Models.IcuModel FormatStringToIcuObject(string[] icuDetails)
         {
 
             Models.IcuModel icu = new Models.IcuModel()

@@ -1,5 +1,5 @@
 ﻿Frontend
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 E:\BootCamp\New\Frontend\App.xaml
 15-1994343134
 
-27-2095685284
+291425327201
 317-31948960
 AddBed.xaml;AddNewPatient.xaml;AllBeds.xaml;AllIcus.xaml;AllPatients.xaml;BedsInIcu.xaml;DeleteBed.xaml;DeleteIcu.xaml;DeletePatient.xaml;IcuConfiguration.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;Resources\ValidationErrorStyle.xaml;ViewAllControl.xaml;
 
-True
+False
 

@@ -5,7 +5,7 @@ namespace Backend.Repository
 {
     public class IcuRepository : IIcuRepository
     {
-        public readonly string _csvFilePath;
+        private readonly string _csvFilePath;
         private readonly Utility.IcuDataHandler _icuDataHandler = new Utility.IcuDataHandler();
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public IcuRepository()

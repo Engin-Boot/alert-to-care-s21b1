@@ -51,11 +51,7 @@ namespace Backend.Controllers
             }
         }
 
-        // PUT api/<PatientsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+       
 
         // DELETE api/<PatientsController>/5
         [HttpDelete("{id}")]

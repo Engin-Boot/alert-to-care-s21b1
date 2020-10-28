@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Backend.Utility
 {
@@ -22,7 +21,7 @@ namespace Backend.Utility
             }
             return allBeds;
         }
-        public Models.BedModel FormatStringToBedObject(string[] bedDetails)
+        private Models.BedModel FormatStringToBedObject(string[] bedDetails)
         {
 
             Models.BedModel bed = new Models.BedModel()

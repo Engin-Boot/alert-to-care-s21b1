@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Backend.Utility
 {
@@ -49,18 +47,18 @@ namespace Backend.Utility
         {
             var csvFormatData = "";
             if (patient.PatientId != null)
-                {
-                    csvFormatData = string.Join(',', new object[]{
+            {
+                csvFormatData = string.Join(',', new object[]{
                     patient.PatientId,
                     patient.Name,
                     patient.Age.ToString(),
-                    patient.IcuId.ToString(),
-                    patient.BedId.ToString(),
+                    patient.IcuId,
+                    patient.BedId,
                     patient.Address,
                     patient.Gender,
                     patient.ContactNo
-                    });
-                }            
+                });
+            }
             return csvFormatData;
         }
 

@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Backend.Utility
 {
     public class BasicValidator
     {
-        public static Func<string, bool> basicValid = field =>
+        public readonly static Func<string, bool> basicValid = field =>
         {
-            bool IsFieldnullOrEmpty = string.IsNullOrEmpty(field);
-            bool IsFieldHaveWhitespace = string.IsNullOrWhiteSpace(field);
-            if (!IsFieldHaveWhitespace && !IsFieldnullOrEmpty)
+            bool isFieldnullOrEmpty = string.IsNullOrEmpty(field);
+            bool isFieldHaveWhitespace = string.IsNullOrWhiteSpace(field);
+            if (!isFieldHaveWhitespace && !isFieldnullOrEmpty)
             {
                 return true;
             }
             return false;
         };
 
-        public static Func<string, bool> ValidInt = IntField =>
+        /*public static Func<string, bool> ValidInt = IntField =>
         {
 
             return Regex.IsMatch(IntField, @"^\d{2,3}$");
@@ -29,6 +26,6 @@ namespace Backend.Utility
         {
 
             return Regex.IsMatch(FloatField, @"^\d{2,3} [.]{0,1}\d{2}$");
-        };
+        };*/
     }
 }
