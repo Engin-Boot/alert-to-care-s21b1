@@ -23,5 +23,3 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
         
-    - name: Run unit tests
-      run: dotnet test --no-build --configuration Release BackendApiTests\BackendApiTests.csproj
