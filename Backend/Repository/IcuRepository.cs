@@ -20,8 +20,7 @@ namespace Backend.Repository
             try
             {
                 //Validation
-                string message;
-                if (_helpers.IsIcuEligibleToBeAdded(newIcu, out message))
+                if (_helpers.IsIcuEligibleToBeAdded(newIcu, out string message))
                 {
                     isAdded = _icuDataHandler.WriteIcu(newIcu, _csvFilePath);
                 }
@@ -41,8 +40,7 @@ namespace Backend.Repository
             try
             {
                 // validation
-                string message;
-                if (_helpers.CanIcuBeRemoved(icuId, out message))    // Check for patients if no patirnts then remove
+                if (_helpers.CanIcuBeRemoved(icuId, out string message))    // Check for patients if no patirnts then remove
                 {
                     isDeleted = _icuDataHandler.DeleteIcu(icuId, _csvFilePath);
                     _helpers.DeleteAllBedsInIcu(icuId);
@@ -64,7 +62,7 @@ namespace Backend.Repository
 
         public Models.IcuModel GetIcu(string id)
         {
-            var icu = _icuDataHandler.ReadIcus(_csvFilePath).Find(icu => icu.IcuId == id);
+            var icu = _icuDataHandler.ReadIcus(_csvFilePath).Find(tempicu => tempicu.IcuId == id);
             return icu;
         }
 

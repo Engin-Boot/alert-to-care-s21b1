@@ -47,7 +47,7 @@ namespace Backend.Repository
             {
                 //validation
               
-                    _helpers.ChangeBedStatusFree(GetPatient(patientId).IcuId, GetPatient(patientId).BedId);
+                    _helpers.ChangeBedStatusFree( GetPatient(patientId).BedId);
                     isDischarged = _patientDataHandler.DeletePatient(patientId, _csvFilePath);
             }
             catch (Exception e)

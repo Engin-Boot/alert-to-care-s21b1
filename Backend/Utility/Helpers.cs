@@ -61,9 +61,12 @@ namespace Backend.Utility
         internal void IncrementNoOfBedsOfIcu(string icuId)
         {
             var icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempicu => tempicu.IcuId ==icuId);
-            icu.NoOfBeds += 1;
-            _icuDataHandler.DeleteIcu(icuId,_icuDataCsvPath);
-            _icuDataHandler.WriteIcu(icu,_icuDataCsvPath);
+            if (icu != null)
+            {
+                icu.NoOfBeds += 1;
+                _icuDataHandler.DeleteIcu(icuId, _icuDataCsvPath);
+                _icuDataHandler.WriteIcu(icu, _icuDataCsvPath);
+            }
         }
         internal void DecrementNoOfBedsOfIcu(string icuId)
         {
@@ -144,7 +147,7 @@ namespace Backend.Utility
       
         private bool IsBedOccupied(Models.BedModel bed)
         {
-            return (bed.BedOccupancyStatus == "Free") ? false : true;
+            return bed.BedOccupancyStatus != "Free";
         }
 
 
@@ -165,7 +168,7 @@ namespace Backend.Utility
 
         public bool IsEmptySlotAvailableToAddBed(string icuId, out string msg)
         {
-            var icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(icu => icu.IcuId == icuId);
+            var icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempicu => tempicu.IcuId == icuId);
             if (icu == null)
             {
                 msg = "Icu not found";
@@ -181,7 +184,7 @@ namespace Backend.Utility
         }
 
        
-        public bool ChangeBedStatusFree(string icuId, string bedId)
+        public bool ChangeBedStatusFree(string bedId)
         {
             var bed = _bedDataHandler.Readbeds(_bedDataCsvPath).Find(tempbed => tempbed.BedId == bedId);
             if (bed != null)
