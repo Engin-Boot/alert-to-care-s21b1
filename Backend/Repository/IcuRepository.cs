@@ -20,7 +20,7 @@ namespace Backend.Repository
             try
             {
                 //Validation
-                if (_helpers.IsIcuEligibleToBeAdded(newIcu, out string message))
+                if (_helpers.IsIcuEligibleToBeAdded(newIcu))
                 {
                     isAdded = _icuDataHandler.WriteIcu(newIcu, _csvFilePath);
                 }
@@ -40,7 +40,7 @@ namespace Backend.Repository
             try
             {
                 // validation
-                if (_helpers.CanIcuBeRemoved(icuId, out string message))    // Check for patients if no patirnts then remove
+                if (_helpers.CanIcuBeRemoved(icuId))    // Check for patients if no patirnts then remove
                 {
                     isDeleted = _icuDataHandler.DeleteIcu(icuId, _csvFilePath);
                     _helpers.DeleteAllBedsInIcu(icuId);

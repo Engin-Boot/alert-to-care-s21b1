@@ -80,36 +80,30 @@ namespace Backend.Utility
             
         }
 
-        public bool IsIcuEligibleToBeAdded(Models.IcuModel icu, out string message)
+        public bool IsIcuEligibleToBeAdded(Models.IcuModel icu)
         {
 
             if (_icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempIcu => tempIcu.IcuId == icu.IcuId)!=null) 
             {
-                message = "Icu with same id exists";
                 return false;
             }
             else if(ValidateBeds(icu))  // check layout with BedId
             {
-                message = "Icu can be added";
                 return true;
             }
-            message = "ICU doesn't meet the conditions to be added";
             return false;
         }
 
-        public bool CanIcuBeRemoved(string icuId, out string message)
+        public bool CanIcuBeRemoved(string icuId)
         {
             if (_icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempicu => tempicu.IcuId == icuId)==null)
             {
-                message = "Icu with this id doesn't exists";
                 return false;
             }
             else if (CheckIfPatientsExistsInIcu(icuId))  
             {
-                message = "Icu has patients, Cannot remove icu";
                 return false;
             }
-            message = "ICU can be Removed safely";
             return true;
         }
 
@@ -184,16 +178,16 @@ namespace Backend.Utility
         }
 
        
-        public bool ChangeBedStatusFree(string bedId)
+        public void ChangeBedStatusFree(string bedId)
         {
             var bed = _bedDataHandler.Readbeds(_bedDataCsvPath).Find(tempbed => tempbed.BedId == bedId);
             if (bed != null)
             {
                 bed.BedOccupancyStatus = "Free";
                 _bedDataHandler.DeleteBed(bedId, _bedDataCsvPath);
-                return _bedDataHandler.WriteBed(bed, _bedDataCsvPath);
+                _bedDataHandler.WriteBed(bed, _bedDataCsvPath);
             }
-            return false;
+         
         }
 
         public void DeleteAllBedsInIcu(string icuId)
