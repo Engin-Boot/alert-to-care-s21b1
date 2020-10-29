@@ -10,18 +10,23 @@ namespace FrontendTest
 {
     public class RemoveIcuTest
     {
-        [Fact]
-        public void TestExpectingICUToBeRemovedWhenCalledWithValidICU()
+        Application application;
+        Window window;
+        public RemoveIcuTest()
         {
-            Application application = Application.Launch(@"C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
+            application = Application.Launch(@"C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
 
-            Window window = application.GetWindow("Hospital ICU management", InitializeOption.NoCache);
+            window = application.GetWindow("Hospital ICU management", InitializeOption.NoCache);
 
-            Button menu = window.Get<Button>("Menu");
+            var menu = window.Get<Button>("Menu");
             menu.Click();
 
             window.Get<Button>("RemoveICU").Click();
+        }
 
+        [Fact]
+        public void TestExpectingICUToBeRemovedWhenCalledWithValidICU()
+        {
             window.Get<ComboBox>("icuList").Select("TestIC2");
 
             window.Get<Button>("removeICU").Click();
@@ -31,7 +36,13 @@ namespace FrontendTest
             messageBox.Close();
             window.Close();
         }
-        
 
+        [Fact]
+        public void TestExpectingRemoveIcuButtonToBeNotEnabledWhenIcuIdIsNotSelected()
+        {
+            var remove = window.Get<Button>("removeICU");
+            Assert.False(remove.Enabled);
+            window.Close();
+        }
     }
 }

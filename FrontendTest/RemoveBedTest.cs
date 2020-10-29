@@ -10,18 +10,23 @@ namespace FrontendTest
 {
     public class RemoveBedTest
     {
-        [Fact]
-        public void TestExpectingICUToBeRemovedWhenCalledWithValidICU()
+        Application application;
+        Window window;
+        public RemoveBedTest()
         {
-            Application application = Application.Launch(@"C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
+            application = Application.Launch(@"C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
 
-            Window window = application.GetWindow("Hospital ICU management", InitializeOption.NoCache);
+            window = application.GetWindow("Hospital ICU management", InitializeOption.NoCache);
 
-            Button menu = window.Get<Button>("Menu");
+            var menu = window.Get<Button>("Menu");
             menu.Click();
 
             window.Get<Button>("RemoveBed").Click();
+        }
 
+        [Fact]
+        public void TestExpectingBedToBeRemovedWhenCalledWithValidDetails()
+        {
             window.Get<ComboBox>("icuList").Select("TestIC1");
 
             window.Get<ComboBox>("bedList").Select("TestIC1L03");
@@ -33,6 +38,20 @@ namespace FrontendTest
             messageBox.Close();
             window.Close();
         }
+        [Fact]
+        public void TestExpectingRemoveBedButtonToBeNotEnabledWhenIcuIdIsNotSelected()
+        {
+            Assert.False(window.Get<Button>("removeBed").Enabled);
+            window.Close();
+        }
+        [Fact]
+        public void TestExpectingRemoveBedButtonToBeNotEnabledWhenBedIdIsNotSelected()
+        {
+            window.Get<ComboBox>("icuList").Select("TestIC1");
+            Assert.False(window.Get<Button>("removeBed").Enabled);
+            window.Close();
+        }
+
 
     }
 }

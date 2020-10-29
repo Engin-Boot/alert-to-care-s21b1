@@ -69,6 +69,7 @@
     <Compile Include="AddIcuTest.cs" />
     <Compile Include="AddPatientTest.cs" />
     <Compile Include="DischargePatientTest.cs" />
+    <Compile Include="MainPageTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveBedTest.cs" />
