@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Net;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Backend.Models;
 
 namespace BackendApiTests

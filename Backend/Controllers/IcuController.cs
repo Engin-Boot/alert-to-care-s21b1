@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
 using Backend.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,12 +50,7 @@ namespace Backend.Controllers
             
         }
 
-        // PUT api/<IcuController>/5
-        [HttpPut("{id}")]
-        public void Put(int id)
-        {
-        }
-
+        
         // DELETE api/<IcuController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)

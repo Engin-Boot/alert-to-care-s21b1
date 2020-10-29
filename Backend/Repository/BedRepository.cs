@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Backend.Repository
 {
     public class BedRepository : IBedRepository
     {
         private readonly Utility.BedDataHandler _bedDataHandler = new Utility.BedDataHandler();
-        private readonly Utility.IcuDataHandler _icuDataHandler = new Utility.IcuDataHandler();
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
-        public readonly string _csvFilePath;
+        private readonly string _csvFilePath;
         public BedRepository()
         {
             this._csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
@@ -59,7 +57,7 @@ namespace Backend.Repository
             try
             {
                 // validation
-                if (_helpers.IsBedAvailable(icuId, bedId, out message))
+                if (_helpers.IsBedAvailable(bedId, out message))
                 {
                     isDeleted = _bedDataHandler.DeleteBed(bedId, _csvFilePath);
                     _helpers.DecrementNoOfBedsOfIcu(icuId);

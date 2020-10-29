@@ -5,7 +5,7 @@ namespace Backend.Repository
 {
     public class PatientRepository : IPatientRepository
     {
-        public readonly string _csvFilePath;
+        private readonly string _csvFilePath;
         private readonly Utility.PatientDataHandler _patientDataHandler = new Utility.PatientDataHandler();
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public PatientRepository()
@@ -47,7 +47,7 @@ namespace Backend.Repository
             {
                 //validation
               
-                    _helpers.ChangeBedStatusFree(GetPatient(patientId).IcuId, GetPatient(patientId).BedId);
+                    _helpers.ChangeBedStatusFree( GetPatient(patientId).BedId);
                     isDischarged = _patientDataHandler.DeletePatient(patientId, _csvFilePath);
             }
             catch (Exception e)
