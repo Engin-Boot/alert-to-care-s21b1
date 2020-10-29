@@ -10,18 +10,23 @@ namespace FrontendTest
 {
     public class DischargePatientTest
     {
-        [Fact]
-        public void TestExpectingPatientToBeRemovedWhenCalledWithValidPatientDetails()
+        Application application;
+        Window window;
+        public DischargePatientTest()
         {
-            Application application = Application.Launch(@"C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
+            application = Application.Launch(@"C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
 
-            Window window = application.GetWindow("Hospital ICU management", InitializeOption.NoCache);
+            window = application.GetWindow("Hospital ICU management", InitializeOption.NoCache);
 
-            Button menu = window.Get<Button>("Menu");
+            var menu = window.Get<Button>("Menu");
             menu.Click();
 
             window.Get<Button>("Discharge").Click();
+        }
 
+        [Fact]
+        public void TestExpectingPatientToBeRemovedWhenCalledWithValidPatientDetails()
+        {
             window.Get<ComboBox>("patientIdList").Select("TestIC1L02Harry");
 
             window.Get<Button>("deleteButton").Click();
@@ -29,6 +34,15 @@ namespace FrontendTest
             Assert.Equal("Patient Discharged!", label.Text);
             Window messageBox = window.MessageBox("");
             messageBox.Close();
+            window.Close();
+        }
+
+        [Fact]
+        public void TestExpectingDischargeButtonToBeNotEnabledWhenPatientIdIsNotSelected()
+        {
+            
+            var discharge = window.Get<Button>("deleteButton");
+            Assert.False(discharge.Enabled);
             window.Close();
         }
 
