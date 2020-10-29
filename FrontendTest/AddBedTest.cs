@@ -14,7 +14,7 @@ namespace FrontendTest
         public void TestExpectingValidIcuToBeAddedWhenCalledWithValidIcuDetails()
         {
 
-            Application application = Application.Launch(@"C:\Users\ALIRAZA\Documents\GitHub\DummyRepository\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
+            Application application = Application.Launch(@"D:a\alert-to-care-s21b1\alert-to-care-s21b1\Frontend\bin\Debug\netcoreapp3.1\Frontend.exe");
 
             Window window = application.GetWindow("Hospital ICU management", InitializeOption.NoCache);
 
