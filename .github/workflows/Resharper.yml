@@ -15,7 +15,7 @@ jobs:
         run: dotnet tool install -g JetBrains.ReSharper.GlobalTools
         
       - name: Run resharper inspection
-        run: jb inspectcode alert-to-care-s21b1.sln --project=*Backend /output=insreport.xml
+        run: jb inspectcode alert-to-care-s21b1.sln --project=Backend /output=insreport.xml
        
       - name: Run resharper duplicate code check
         run: jb dupfinder Backend BackendApiTests /output=dupreport.xml
