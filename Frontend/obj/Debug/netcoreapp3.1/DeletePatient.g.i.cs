@@ -78,7 +78,7 @@ namespace Frontend {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Frontend;component/deletepatient.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Frontend;V1.0.0.0;component/deletepatient.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\DeletePatient.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

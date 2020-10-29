@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\BackendApiTests\\BackendApiTests.csproj": {}
+    "E:\\BootCamp\\New\\BackendApiTests\\BackendApiTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\BackendApiTests\\BackendApiTests.csproj": {
+    "E:\\BootCamp\\New\\BackendApiTests\\BackendApiTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\BackendApiTests\\BackendApiTests.csproj",
+        "projectUniqueName": "E:\\BootCamp\\New\\BackendApiTests\\BackendApiTests.csproj",
         "projectName": "BackendApiTests",
-        "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\BackendApiTests\\BackendApiTests.csproj",
-        "packagesPath": "C:\\Users\\ALIRAZA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\BackendApiTests\\obj\\",
+        "projectPath": "E:\\BootCamp\\New\\BackendApiTests\\BackendApiTests.csproj",
+        "packagesPath": "C:\\Users\\TOSHIBA\\.nuget\\packages\\",
+        "outputPath": "E:\\BootCamp\\New\\BackendApiTests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ALIRAZA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TOSHIBA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\Backend.csproj": {
-                "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\Backend.csproj"
+              "E:\\BootCamp\\New\\Backend\\Backend.csproj": {
+                "projectPath": "E:\\BootCamp\\New\\Backend\\Backend.csproj"
               }
             }
           }
@@ -84,24 +81,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\Backend.csproj": {
+    "E:\\BootCamp\\New\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\Backend.csproj",
+        "projectUniqueName": "E:\\BootCamp\\New\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\ALIRAZA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\obj\\",
+        "projectPath": "E:\\BootCamp\\New\\Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\TOSHIBA\\.nuget\\packages\\",
+        "outputPath": "E:\\BootCamp\\New\\Backend\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ALIRAZA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TOSHIBA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -148,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
