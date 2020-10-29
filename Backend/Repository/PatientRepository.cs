@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Backend.Models;
+using Backend.Utility;
+using System;
 using System.Collections.Generic;
 
 namespace Backend.Repository
@@ -10,7 +12,7 @@ namespace Backend.Repository
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public PatientRepository()
         {
-            this._csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
+            this._csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
         }
         public IEnumerable<Models.PatientModel> GetAllPatients()
         {
@@ -26,6 +28,12 @@ namespace Backend.Repository
                 if (_helpers.CanPatientBeAdded(newPatient, out message))
                 {
                     isAdded = _patientDataHandler.WritePatient(newPatient, _csvFilePath);
+                    var patientVitals = new PatientVitalsModel()
+                    {
+                        PatientId = newPatient.PatientId,
+                        Vitals = VitalsHelper._vitalNames
+                    };
+                    new PatientVitalRepository().WriteVitals(patientVitals);
                     _helpers.ChangeBedStatusToOccupied(newPatient.BedId);
                 }
 
@@ -46,9 +54,9 @@ namespace Backend.Repository
             try
             {
                 //validation
-              
-                    _helpers.ChangeBedStatusFree( GetPatient(patientId).BedId);
-                    isDischarged = _patientDataHandler.DeletePatient(patientId, _csvFilePath);
+                _helpers.ChangeBedStatusFree(GetPatient(patientId).BedId);
+                isDischarged = _patientDataHandler.DeletePatient(patientId, _csvFilePath);
+                new PatientVitalRepository().DeletePatientVitals(patientId);
             }
             catch (Exception e)
             {
