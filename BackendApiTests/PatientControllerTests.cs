@@ -38,6 +38,7 @@ namespace BackendApiTests
         public async Task TestExpectingFalseForPatientToBeAddedIfItIsInValid()
         {
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
+            _patient.Age = 55;
             var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_patient), Encoding.UTF8, "application/json"));
             var jsonString = await response.Content.ReadAsStringAsync();
             Assert.Equal("Patient couldnot be added", JsonConvert.DeserializeObject<string>(jsonString));
