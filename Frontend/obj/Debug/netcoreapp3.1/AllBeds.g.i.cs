@@ -85,7 +85,7 @@ namespace Frontend {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Frontend;V1.0.0.0;component/allbeds.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Frontend;component/allbeds.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AllBeds.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

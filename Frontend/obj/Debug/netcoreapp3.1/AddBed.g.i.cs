@@ -70,7 +70,7 @@ namespace Frontend {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Frontend;V1.0.0.0;component/addbed.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Frontend;component/addbed.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddBed.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
