@@ -36,10 +36,9 @@ namespace BackendApiTests
         public async Task TestExpectingFalseForIcuToBeAddedIfItIsInValid()
         {
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
-            _icu.MaxBeds = 15;
-            var response = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
-            var jsonString = await response.Content.ReadAsStringAsync();
-            Assert.Equal("ICU could not be added", JsonConvert.DeserializeObject<string>(jsonString));
+            var tempResponse = await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
+            var tempJsonString = await tempResponse.Content.ReadAsStringAsync();
+            Assert.Equal("ICU could not be added", JsonConvert.DeserializeObject<string>(tempJsonString));
             await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
         }
         [Fact]
