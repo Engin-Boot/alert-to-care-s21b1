@@ -26,30 +26,46 @@ namespace Frontend
 
         private void AddBedItem_Selected(object sender, RoutedEventArgs e)
         {
-            
-            Application.Current.MainWindow.Content = new AddBed();
-            //this.Content = addIcu;
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new AddBed());
         }
         private void AddIcuItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new IcuConfiguration();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new IcuConfiguration());
         }
         private void DeleteBedItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new DeleteBed();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new DeleteBed());
         }
         private void DeleteIcuItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new DeleteIcu();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new DeleteIcu());
         }
 
         private void AddPatientItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new AddNewPatient(null,null);
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new AddNewPatient(null,null));
         }
         private void DeletePatientItem_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new DeletePatient();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new DeletePatient());
         }
     }
 }

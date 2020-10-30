@@ -102,7 +102,7 @@ namespace Frontend.ViewModel
             }
         }
 
-        public void UpdateIcuDetails(IcuModel icu)
+        public void UpdateIcuDetail(IcuModel icu)
         {
             if (icu != null)
             {

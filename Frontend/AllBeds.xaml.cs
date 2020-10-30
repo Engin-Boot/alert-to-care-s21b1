@@ -49,7 +49,15 @@ namespace Frontend
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
+        }
+        private void LoadMainPage()
+        {
+
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new MainPage());
         }
     }
 }

@@ -49,18 +49,20 @@ namespace Frontend
             };
             string msg = icuApiObj.AddIcu(icu);
             MessageBox.Show(msg);
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
         }
-
-        /*private void AddIcu()
+        private void LoadMainPage()
         {
-            
 
-        }*/
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new MainPage());
+        }
     }
 }

@@ -9,7 +9,14 @@
         Title="Hospital ICU management" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}, Converter={local:RatioConverter}, ConverterParameter='0.95'}"
         Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}, Converter={local:RatioConverter}, ConverterParameter='1' }">
     
-    <DockPanel>
-        
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Right">
+            <TextBlock Text="Patients Alert" Foreground="Red" FontSize="25" Margin="5 50 5 20" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+            <ListView x:Name="AlertListView" FontSize="13" Margin="10 100 20 50" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200"
+                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                      ItemsSource="{Binding Path=AlertList}"
+                      ScrollViewer.CanContentScroll="false" ScrollViewer.VerticalScrollBarVisibility="Visible"></ListView>
+        </Grid>
+        <DockPanel x:Name="LeftSide" DockPanel.Dock="Left"></DockPanel>
     </DockPanel>
 </Window>

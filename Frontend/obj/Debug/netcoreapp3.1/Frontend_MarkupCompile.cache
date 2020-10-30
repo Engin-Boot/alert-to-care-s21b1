@@ -16,5 +16,5 @@ E:\BootCamp\New\Frontend\App.xaml
 324-323114138
 AddBed.xaml;AddNewPatient.xaml;AllBeds.xaml;AllIcus.xaml;AllPatients.xaml;BedsInIcu.xaml;DeleteBed.xaml;DeleteIcu.xaml;DeletePatient.xaml;IcuConfiguration.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;Resources\ValidationErrorStyle.xaml;ViewAllControl.xaml;
 
-False
+True
 

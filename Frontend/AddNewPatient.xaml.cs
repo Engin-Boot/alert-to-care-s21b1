@@ -51,7 +51,7 @@ namespace Frontend
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -69,12 +69,19 @@ namespace Frontend
             };
             var result = new PatientApiCalls().AddPatient(patient);
             MessageBox.Show(result);
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
+        }
+        private void LoadMainPage()
+        {
+
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new MainPage());
         }
 
         private void icuIdList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //this.addButton.IsEnabled = true;
             RetrieveBeds();
         }
 

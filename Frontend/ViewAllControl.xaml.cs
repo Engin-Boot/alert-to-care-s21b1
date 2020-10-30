@@ -25,22 +25,34 @@ namespace Frontend
 
         private void AllICUs_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new AllIcus();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new AllIcus());
         }
 
         private void AllBeds_Selected(object sender, RoutedEventArgs e)
         {
-           Application.Current.MainWindow.Content = new AllBeds();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new AllBeds());
         }
 
         private void AllPatients_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new AllPatients();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new AllPatients());
         }
 
         private void BedInICU_Selected(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new BedsInIcu();
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new BedsInIcu());
         }
     }
 }

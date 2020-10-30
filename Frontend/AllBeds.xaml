@@ -10,7 +10,7 @@
         <Button DockPanel.Dock="Top" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10" Click="BackButton_Click"></Button>
         <Grid>
             <TextBlock Text="Select Bed" HorizontalAlignment="Center" Margin="180 20 100 0" FontWeight="Bold" FontSize="20"></TextBlock>
-            <ListView x:Name="BedIDListView" DockPanel.Dock="Left" FontSize="20" Margin="180 100 100 20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="120"
+            <ListView x:Name="BedIDListView" DockPanel.Dock="Left" FontSize="20" Margin="180 100 100 20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150"
                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   SelectionChanged="BedIDList_Selected" ScrollViewer.CanContentScroll="false" ScrollViewer.VerticalScrollBarVisibility="Visible"></ListView>
         </Grid>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -73,7 +74,7 @@ namespace Frontend
         {
             this.BedList.Clear();
             
-            var beds = new BedApiCalls().GetAllBedsFromAnIcu(this.icuList.SelectedItem.ToString());
+            var beds = new BedApiCalls().GetAllBedsFromAnIcu(this.icuList.SelectedItem.ToString()).ToList().FindAll(b => b.BedOccupancyStatus == "Free");
             foreach(var bed in beds)
             {
                 this.BedList.Add(bed.BedId);
@@ -100,7 +101,7 @@ namespace Frontend
             var bedId = BedId;
             var result = new BedApiCalls().RemoveBed(icuId,bedId);
             MessageBox.Show(result);
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
         }
 
         
@@ -110,7 +111,15 @@ namespace Frontend
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
+        }
+        private void LoadMainPage()
+        {
+
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new MainPage());
         }
         public void OnPropertyChanged(string propertyName)
         {
