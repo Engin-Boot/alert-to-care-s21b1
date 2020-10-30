@@ -8,7 +8,7 @@ namespace Backend.Utility
 {
     public class VitalsHelper
     {
-        private readonly string _csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Vitals.csv";
+        private readonly string _csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Vitals.csv";
         private readonly VitalsDataHandler _vitalsDataHandler = new VitalsDataHandler();
         public static readonly List<VitalsModel> _vitalNames = new List<VitalsModel>()
         {
@@ -46,7 +46,7 @@ namespace Backend.Utility
             Random rand = new Random();
             return rand.Next(Convert.ToInt32(lower)-10,Convert.ToInt32(upper)+10);
         }
-        public bool UpdatePatientVitals(PatientVitalsModel patientVitals)
+        private bool UpdatePatientVitals(PatientVitalsModel patientVitals)
         {
             var isUpdated = _vitalsDataHandler.DeletePatientVitals(patientVitals.PatientId, _csvFilePath);
             isUpdated &= _vitalsDataHandler.WriteVitals(patientVitals, _csvFilePath);

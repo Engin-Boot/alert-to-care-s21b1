@@ -33,7 +33,7 @@ namespace Frontend
             InitializeComponent();
             _icuDetails = new Icudetails();
             this.DataContext = _icuDetails;
-           
+
             BedLayoutFunctionCall = new Dictionary<string, Func<int, List<int>>>
             {
                 { "L" , LBedLayout},
@@ -59,16 +59,17 @@ namespace Frontend
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += new EventHandler(CheckAllVitals);
-            timer1.Interval = 10000; // in miliseconds
+            timer1.Interval = 60000; // in miliseconds
             timer1.Start();
         }
 
         public void CheckAllVitals(object sender, EventArgs e)
         {
+            //MessageBox.Show("Check All Vitals Called");
             var patientVitals = new VitalApiCalls().GetAllVitals();
-            if(patientVitals != null)
+            if (patientVitals != null)
             {
-                foreach(var patientVital in patientVitals)
+                foreach (var patientVital in patientVitals)
                 {
                     CheckPatientVitals(patientVital);
                 }
@@ -83,23 +84,22 @@ namespace Frontend
                 {
                     var tempPatient = new PatientApiCalls().GetPatient(patientVital.PatientId);
                     this.icuComboBox.Text = tempPatient.IcuId;
-
-                    //MessageBox.Show(patientVital.PatientId);
-                    var button = (Button) this.FindName(tempPatient.BedId);
-                    if(button != null)
-                        button.Background = Brushes.Red;
+                    //MessageBox.Show(tempPatient.BedId);
+                    var BedButton = LogicalTreeHelper.FindLogicalNode(this.BedDock, tempPatient.BedId) as Button;
+                    if (BedButton != null)
+                        BedButton.Background = Brushes.Red;
                     break;
                 }
             }
         }
 
 
-        public bool MonitorVital(float value,float lower,float upper)
+        public bool MonitorVital(float value, float lower, float upper)
         {
             return value >= lower && value <= upper;
         }
 
-        public PatientVitalsModels RetrieveIcu(string icuId)
+        public IcuModel RetrieveIcu(string icuId)
         {
             var icu = new IcuApiCalls().GetIcu(icuId);
             _icuDetails.UpdateIcuDetails(icu);
@@ -115,25 +115,25 @@ namespace Frontend
         {
             this._icuDetails.IcuIdList.Clear();
             var allIcus = new IcuApiCalls().GetAllIcus();
-            foreach(var icu in allIcus)
+            foreach (var icu in allIcus)
             {
                 this._icuDetails.IcuIdList.Add(icu.IcuId);
-            }          
+            }
         }
 
 
-        private void CreateAndPlaceBeds(PatientVitalsModels icu)
+        private void CreateAndPlaceBeds(IcuModel icu)
         {
             var index = BedLayoutFunctionCall[icu.Layout].Invoke(icu.MaxBeds);
             var noOfBeds = icu.NoOfBeds;
             V1StackPanel.Children.Clear();
             HStackPanel.Children.Clear();
             V2StackPanel.Children.Clear();
-            
+
             //var index = UBedLayout(BedList);
-            for (int i=0; i < index[0] && i < noOfBeds ; i++)
+            for (int i = 0; i < index[0] && i < noOfBeds; i++)
             {
-                
+
                 V1StackPanel.Children.Add(CreateSingleBed(i));
             }
 
@@ -144,7 +144,7 @@ namespace Frontend
             }
 
             index[2] = index[2] + index[1];
-            for (int i = index[1] ; i < index[2] && i < noOfBeds; i++)
+            for (int i = index[1]; i < index[2] && i < noOfBeds; i++)
             {
                 V2StackPanel.Children.Add(CreateSingleBed(i));
             }
@@ -155,27 +155,27 @@ namespace Frontend
             var color = Brushes.LightGray;
             if (beds[i].BedOccupancyStatus == "Occupied")
                 color = Brushes.LightGreen;
-            
+
             Button newBed = new Button
             {
                 Content = beds[i].BedId,
                 Padding = new Thickness(10),
                 FontSize = 15,
-                //Name = beds[i].BedId,
+                Name = beds[i].BedId,
                 Background = color,
-                Margin=new Thickness(5)
+                Margin = new Thickness(5)
             };
-            newBed.SetValue(FrameworkElement.NameProperty, beds[i].BedId);
+            //newBed.SetValue(FrameworkElement.NameProperty, beds[i].BedId);
             newBed.MouseEnter += new MouseEventHandler(MouseOverBed);
             newBed.MouseLeave += new MouseEventHandler(MouseLeaveBed);
             return newBed;
         }
 
         private void MouseOverBed(object sender, RoutedEventArgs e)
-       {
+        {
             var btn = sender as Button;
             var bedId = btn.Name.ToString();
-            
+
             StackPanel innerStackPanel = new StackPanel();
 
             Thickness margin = new Thickness(3);
@@ -184,7 +184,7 @@ namespace Frontend
                 Text = bedId,
                 Margin = margin
             };
-            
+
             string option = "";
             var bed = beds.ToList().Find(b => b.BedId == bedId);
             if (bed.BedOccupancyStatus == "Free")
@@ -214,7 +214,7 @@ namespace Frontend
             }
             innerStackPanel.Children.Add(optionButton);
             btn.Content = innerStackPanel;
-       }
+        }
 
         private void MouseLeaveBed(object sender, RoutedEventArgs e)
         {
@@ -224,14 +224,14 @@ namespace Frontend
         }
 
 
-        private void AddOrRemovePatient(Object sender, RoutedEventArgs e )
+        private void AddOrRemovePatient(Object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
             //MessageBox.Show(btn.Name); // BedId
             if (btn.Content.ToString() == "Add Patient")
             {
-                
-                Application.Current.MainWindow.Content = new AddNewPatient(icuId.Text.ToString(),btn.Name.ToString());
+
+                Application.Current.MainWindow.Content = new AddNewPatient(icuId.Text.ToString(), btn.Name.ToString());
             }
             else
             {
@@ -243,7 +243,7 @@ namespace Frontend
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            if(MenuOptions.Visibility == Visibility.Collapsed)
+            if (MenuOptions.Visibility == Visibility.Collapsed)
                 MenuOptions.Visibility = Visibility.Visible;
             else if (MenuOptions.Visibility == Visibility.Visible)
                 MenuOptions.Visibility = Visibility.Collapsed;
@@ -252,7 +252,7 @@ namespace Frontend
 
         private void ViewAll_Click(object sender, RoutedEventArgs e)
         {
-           if (ViewAllOptions.Visibility == Visibility.Collapsed)
+            if (ViewAllOptions.Visibility == Visibility.Collapsed)
                 ViewAllOptions.Visibility = Visibility.Visible;
             else if (ViewAllOptions.Visibility == Visibility.Visible)
                 ViewAllOptions.Visibility = Visibility.Collapsed;
@@ -261,7 +261,7 @@ namespace Frontend
         private List<int> LBedLayout(int maxBeds)
         {
             var index = new List<int>();
-            index.Add(maxBeds/2);
+            index.Add(maxBeds / 2);
             index.Add(maxBeds / 2 + maxBeds % 2);
             index.Add(0);
             return index;

@@ -10,11 +10,11 @@ namespace Backend.Repository
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public IcuRepository()
         {
-            _csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
+            _csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
         }
 
         // Add update vitals in maintanance. 
-        public bool AddIcu(Models.PatientVitalsModels newIcu)
+        public bool AddIcu(Models.IcuModel newIcu)
         {
             bool isAdded = false;
             try
@@ -55,12 +55,12 @@ namespace Backend.Repository
             return isDeleted;
         }
 
-        public List<Models.PatientVitalsModels> GetAllIcu()
+        public List<Models.IcuModel> GetAllIcu()
         {
             return _icuDataHandler.ReadIcus(_csvFilePath);
         }
 
-        public Models.PatientVitalsModels GetIcu(string id)
+        public Models.IcuModel GetIcu(string id)
         {
             var icu = _icuDataHandler.ReadIcus(_csvFilePath).Find(tempicu => tempicu.IcuId == id);
             return icu;

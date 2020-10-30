@@ -23,12 +23,13 @@ namespace Backend.Controllers
         {
             return _patientVitalRepository.ReadVitals();
         }
+        
         [HttpGet("{patientId}")]
         public List<VitalsModel> Get(string patientId)
         {
             return _patientVitalRepository.ReadPatientVitals(patientId);
         }
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult Post([FromBody] PatientVitalsModel patientVitals)
         {
             return Json(_patientVitalRepository.WriteVitals(patientVitals));
@@ -37,7 +38,7 @@ namespace Backend.Controllers
         public ActionResult Delete(string patientId)
         {
             return Json(_patientVitalRepository.DeletePatientVitals(patientId));
-        }
+        }*/
         [HttpPut]
         public void Update()
         {
