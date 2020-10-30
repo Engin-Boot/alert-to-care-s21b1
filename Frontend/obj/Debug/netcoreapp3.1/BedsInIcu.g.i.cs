@@ -94,7 +94,7 @@ namespace Frontend {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Frontend;component/bedsinicu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Frontend;V1.0.0.0;component/bedsinicu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\BedsInIcu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
