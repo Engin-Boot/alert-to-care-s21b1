@@ -126,7 +126,7 @@ namespace Frontend {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Frontend;component/allpatients.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Frontend;V1.0.0.0;component/allpatients.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AllPatients.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
