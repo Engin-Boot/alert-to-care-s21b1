@@ -52,9 +52,54 @@ namespace Frontend
             beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
             CreateAndPlaceBeds(icu);
             GetAllPatientsInIcu(icuId);
+            KeepMonitoringVitals();
         }
 
-        public IcuModel RetrieveIcu(string icuId)
+        public void KeepMonitoringVitals()
+        {
+            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            timer1.Tick += new EventHandler(CheckAllVitals);
+            timer1.Interval = 10000; // in miliseconds
+            timer1.Start();
+        }
+
+        public void CheckAllVitals(object sender, EventArgs e)
+        {
+            var patientVitals = new VitalApiCalls().GetAllVitals();
+            if(patientVitals != null)
+            {
+                foreach(var patientVital in patientVitals)
+                {
+                    CheckPatientVitals(patientVital);
+                }
+            }
+        }
+
+        public void CheckPatientVitals(PatientVitalsModel patientVital)
+        {
+            foreach (var vital in patientVital.Vitals)
+            {
+                if (!MonitorVital(vital.Value, vital.Lower, vital.Upper))
+                {
+                    var tempPatient = new PatientApiCalls().GetPatient(patientVital.PatientId);
+                    this.icuComboBox.Text = tempPatient.IcuId;
+
+                    //MessageBox.Show(patientVital.PatientId);
+                    var button = (Button) this.FindName(tempPatient.BedId);
+                    if(button != null)
+                        button.Background = Brushes.Red;
+                    break;
+                }
+            }
+        }
+
+
+        public bool MonitorVital(float value,float lower,float upper)
+        {
+            return value >= lower && value <= upper;
+        }
+
+        public PatientVitalsModels RetrieveIcu(string icuId)
         {
             var icu = new IcuApiCalls().GetIcu(icuId);
             _icuDetails.UpdateIcuDetails(icu);
@@ -77,7 +122,7 @@ namespace Frontend
         }
 
 
-        private void CreateAndPlaceBeds(IcuModel icu)
+        private void CreateAndPlaceBeds(PatientVitalsModels icu)
         {
             var index = BedLayoutFunctionCall[icu.Layout].Invoke(icu.MaxBeds);
             var noOfBeds = icu.NoOfBeds;
@@ -116,11 +161,11 @@ namespace Frontend
                 Content = beds[i].BedId,
                 Padding = new Thickness(10),
                 FontSize = 15,
-                Name = beds[i].BedId,
+                //Name = beds[i].BedId,
                 Background = color,
                 Margin=new Thickness(5)
             };
-
+            newBed.SetValue(FrameworkElement.NameProperty, beds[i].BedId);
             newBed.MouseEnter += new MouseEventHandler(MouseOverBed);
             newBed.MouseLeave += new MouseEventHandler(MouseLeaveBed);
             return newBed;

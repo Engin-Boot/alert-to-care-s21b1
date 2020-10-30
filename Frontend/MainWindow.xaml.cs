@@ -24,14 +24,23 @@ namespace Frontend
         public MainWindow()
         {
             InitializeComponent();
+
+            new VitalApiCalls().StartVitalsUpdate();
+
             var count = new IcuApiCalls().GetAllIcus().Count();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             if (count == 0)
                 this.Content = new IcuConfiguration();
             else
-                this.Content = new MainPage();
-
-
+            {
+                MainPage mainPage = new MainPage();
+                
+                this.Content = mainPage;
+               //mainPage.KeepMonitoringVitals();
+            }
+            
         }
+
+
     }
 }

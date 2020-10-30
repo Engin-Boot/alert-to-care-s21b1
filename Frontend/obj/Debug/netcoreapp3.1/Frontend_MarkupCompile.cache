@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\BootCamp\New\Frontend\obj\Debug\netcoreapp3.1\
+C:\Users\ALIRAZA\Documents\GitHub\alert-to-care-s21b1New\Frontend\obj\Debug\netcoreapp3.1\
 Frontend
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-E:\BootCamp\New\Frontend\App.xaml
+C:\Users\ALIRAZA\Documents\GitHub\alert-to-care-s21b1New\Frontend\App.xaml
 15-1994343134
 
-27-2095685284
-317-31948960
+281596666733
+324694203059
 AddBed.xaml;AddNewPatient.xaml;AllBeds.xaml;AllIcus.xaml;AllPatients.xaml;BedsInIcu.xaml;DeleteBed.xaml;DeleteIcu.xaml;DeletePatient.xaml;IcuConfiguration.xaml;MainPage.xaml;MainWindow.xaml;MenuControl.xaml;Resources\ValidationErrorStyle.xaml;ViewAllControl.xaml;
 
 False

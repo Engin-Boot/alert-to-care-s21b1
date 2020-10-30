@@ -13,9 +13,8 @@ namespace Frontend.ApiCalls
     class VitalApiCalls
     {
         private readonly string _url = "http://localhost:5000/api/vitals";
-        public ObservableCollection<IcuModel> _icus = new ObservableCollection<IcuModel>();
-        DataContractJsonSerializer _jsonSerializer;
-        public ObservableCollection<IcuModel> GetAllIcus()
+        public ObservableCollection<PatientVitalsModel> _vitals = new ObservableCollection<PatientVitalsModel>();
+        public ObservableCollection<PatientVitalsModel> GetAllVitals()
         {
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url);
             _httpReq.Method = "GET";
@@ -25,19 +24,15 @@ namespace Frontend.ApiCalls
                 var stream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(stream);
                 var result = reader.ReadToEnd();
-                _icus = JsonConvert.DeserializeObject<ObservableCollection<IcuModel>>(result);
-                _icus = new ObservableCollection<IcuModel>(_icus.OrderBy(i => i.IcuId));
+                _vitals = JsonConvert.DeserializeObject<ObservableCollection<PatientVitalsModel>>(result);
             }
-            return _icus;
+            return _vitals;
         }
-        public string RemoveIcu(string icuId)
+        public void StartVitalsUpdate()
         {
-            HttpWebRequest _httpPostReq = WebRequest.CreateHttp(_url + "/" + icuId);
-            _httpPostReq.Method = "DELETE";
-            _httpPostReq.ContentType = "application/json";
-            HttpWebResponse response = _httpPostReq.GetResponse() as HttpWebResponse;
-            _jsonSerializer = new DataContractJsonSerializer(typeof(string));
-            return _jsonSerializer.ReadObject(response.GetResponseStream()) as string;
+            HttpWebRequest _httpPostReq = WebRequest.CreateHttp(_url);
+            _httpPostReq.Method = "PUT";
+            _httpPostReq.GetResponse();
         }
 
     }

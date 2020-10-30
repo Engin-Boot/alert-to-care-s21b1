@@ -41,6 +41,7 @@ namespace Backend.Controllers
         [HttpPut]
         public void Update()
         {
+            Console.WriteLine("Update Called");
             _patientVitalRepository.StartUpdate();
         }
     }

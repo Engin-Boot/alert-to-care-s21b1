@@ -12,19 +12,19 @@ namespace Frontend.ApiCalls
     public class IcuApiCalls
     {
         private readonly string _url ="http://localhost:5000/api/icus";
-        public ObservableCollection<IcuModel> _icus = new ObservableCollection<IcuModel>();
+        public ObservableCollection<PatientVitalsModels> _icus = new ObservableCollection<PatientVitalsModels>();
         DataContractJsonSerializer _jsonSerializer;
         public IcuApiCalls()
         {
             //GetAllIcus();
         }
-        public string AddIcu(IcuModel icuModel)
+        public string AddIcu(PatientVitalsModels icuModel)
         {
             HttpWebRequest _httpPostReq =WebRequest.CreateHttp(_url);
             _httpPostReq.Method = "POST";
             _httpPostReq.ContentType = "application/json";
             DataContractJsonSerializer userDataJsonSerializer =
-                new DataContractJsonSerializer(typeof(IcuModel));
+                new DataContractJsonSerializer(typeof(PatientVitalsModels));
             userDataJsonSerializer.WriteObject(_httpPostReq.GetRequestStream(), icuModel);
             HttpWebResponse response = _httpPostReq.GetResponse() as HttpWebResponse;
             _jsonSerializer = new DataContractJsonSerializer(typeof(string));
@@ -39,7 +39,7 @@ namespace Frontend.ApiCalls
             _jsonSerializer = new DataContractJsonSerializer(typeof(string));
             return _jsonSerializer.ReadObject(response.GetResponseStream()) as string;
         }
-        public ObservableCollection<IcuModel> GetAllIcus()
+        public ObservableCollection<PatientVitalsModels> GetAllIcus()
         {
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url);
             _httpReq.Method = "GET";
@@ -49,12 +49,12 @@ namespace Frontend.ApiCalls
                 var stream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(stream);
                 var result = reader.ReadToEnd();
-                _icus = JsonConvert.DeserializeObject<ObservableCollection<IcuModel>>(result);
-                _icus = new ObservableCollection<IcuModel>(_icus.OrderBy(i => i.IcuId));   
+                _icus = JsonConvert.DeserializeObject<ObservableCollection<PatientVitalsModels>>(result);
+                _icus = new ObservableCollection<PatientVitalsModels>(_icus.OrderBy(i => i.IcuId));   
             }
             return _icus;
         }
-        public IcuModel GetIcu(string icuId)
+        public PatientVitalsModels GetIcu(string icuId)
         {
             HttpWebRequest _httpReq = WebRequest.CreateHttp(_url + "/" + icuId);
             _httpReq.Method = "GET";
@@ -64,7 +64,7 @@ namespace Frontend.ApiCalls
                 var stream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(stream);
                 var result = reader.ReadToEnd();
-                var icu = JsonConvert.DeserializeObject<IcuModel>(result);
+                var icu = JsonConvert.DeserializeObject<PatientVitalsModels>(result);
                 return icu;
             }
             return null;

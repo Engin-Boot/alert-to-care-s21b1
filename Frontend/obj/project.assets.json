@@ -74,19 +74,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TOSHIBA\\.nuget\\packages\\": {}
+    "C:\\Users\\ALIRAZA\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\BootCamp\\New\\Frontend\\Frontend.csproj",
+      "projectUniqueName": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Frontend\\Frontend.csproj",
       "projectName": "Frontend",
-      "projectPath": "E:\\BootCamp\\New\\Frontend\\Frontend.csproj",
-      "packagesPath": "C:\\Users\\TOSHIBA\\.nuget\\packages\\",
-      "outputPath": "E:\\BootCamp\\New\\Frontend\\obj\\",
+      "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Frontend\\Frontend.csproj",
+      "packagesPath": "C:\\Users\\ALIRAZA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Frontend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\TOSHIBA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ALIRAZA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -99,8 +103,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\BootCamp\\New\\Backend\\Backend.csproj": {
-              "projectPath": "E:\\BootCamp\\New\\Backend\\Backend.csproj"
+            "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\Backend.csproj": {
+              "projectPath": "C:\\Users\\ALIRAZA\\Documents\\GitHub\\alert-to-care-s21b1New\\Backend\\Backend.csproj"
             }
           }
         }
@@ -136,11 +140,11 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           },
-          "Microsoft.WindowsDesktop.App.WPF": {
+          "Microsoft.WindowsDesktop.App": {
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

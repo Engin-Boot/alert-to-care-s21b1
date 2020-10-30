@@ -19,21 +19,21 @@ namespace Backend.Controllers
         }
         // GET: api/<IcuController>
         [HttpGet]
-        public IEnumerable<Models.IcuModel> Get()
+        public IEnumerable<Models.PatientVitalsModels> Get()
         {
             return _icuRepository.GetAllIcu();
         }
 
         // GET api/<IcuController>/5
         [HttpGet("{id}")]
-        public Models.IcuModel Get(string id)
+        public Models.PatientVitalsModels Get(string id)
         {
            return  _icuRepository.GetIcu(id);
         }
 
         // POST api/<IcuController>
         [HttpPost]
-        public IActionResult Post([FromBody] Models.IcuModel icu)
+        public IActionResult Post([FromBody] Models.PatientVitalsModels icu)
         {
             try
             {
