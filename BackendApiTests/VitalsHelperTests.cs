@@ -1,6 +1,7 @@
 ﻿using Backend.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -20,14 +21,18 @@ namespace BackendApiTests
            var response =  await _mockServer.Client.GetAsync(_url);
             var jsonString = await response.Content.ReadAsStringAsync();
             var vitals = JsonConvert.DeserializeObject<List<Backend.Models.PatientVitalsModel>>(jsonString);
-            var patientId = vitals[0].PatientId;
-            var vitalListOld = vitals[0].Vitals;
-            new Backend.Utility.VitalsHelper().UpdateVitalsRegularly();
-            response = await _mockServer.Client.GetAsync(_url + "/" + patientId);
-            jsonString = await response.Content.ReadAsStringAsync();
-            var vitalList = JsonConvert.DeserializeObject<List<VitalsModel>>(jsonString);
-            Assert.Equal(vitalListOld[0].VitalName, vitalList[0].VitalName);
-            Assert.False(vitalListOld[0].Value == vitalList[0].Value);
+            if(vitals!=null && vitals.Any())
+            {
+                var patientId = vitals[0].PatientId;
+                var vitalListOld = vitals[0].Vitals;
+                new Backend.Utility.VitalsHelper().UpdateVitalsRegularly();
+                response = await _mockServer.Client.GetAsync(_url + "/" + patientId);
+                jsonString = await response.Content.ReadAsStringAsync();
+                var vitalList = JsonConvert.DeserializeObject<List<VitalsModel>>(jsonString);
+                Assert.Equal(vitalListOld[0].VitalName, vitalList[0].VitalName);
+                Assert.False(vitalListOld[0].Value == vitalList[0].Value);
+            }
+            
         }
     }
 }
