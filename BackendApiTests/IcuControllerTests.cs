@@ -15,7 +15,7 @@ namespace BackendApiTests
         {
             _mockServer = new MockServer();
         }
-        Backend.Models.PatientVitalsModels _icu = new Backend.Models.PatientVitalsModels()
+        Backend.Models.IcuModel _icu = new Backend.Models.IcuModel()
         {
             IcuId = "IC3",
             Layout = "U",
@@ -47,7 +47,7 @@ namespace BackendApiTests
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.GetAsync(_url);
             var jsonString = await response.Content.ReadAsStringAsync();
-            var icus = JsonConvert.DeserializeObject<List<Backend.Models.PatientVitalsModels>>(jsonString);
+            var icus = JsonConvert.DeserializeObject<List<Backend.Models.IcuModel>>(jsonString);
             
             Assert.Contains("IC3", jsonString);
             await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
@@ -60,7 +60,7 @@ namespace BackendApiTests
             await _mockServer.Client.PostAsync(_url, new StringContent(JsonConvert.SerializeObject(_icu), Encoding.UTF8, "application/json"));
             var response = await _mockServer.Client.GetAsync(_url+"/IC3");
             var jsonString = await response.Content.ReadAsStringAsync();
-            var icu = JsonConvert.DeserializeObject<Backend.Models.PatientVitalsModels>(jsonString);
+            var icu = JsonConvert.DeserializeObject<Backend.Models.IcuModel>(jsonString);
             Assert.Equal("IC3", icu.IcuId);
             Assert.Equal("U", icu.Layout);
             await _mockServer.Client.DeleteAsync(_url + "/" + _icu.IcuId);
@@ -71,7 +71,7 @@ namespace BackendApiTests
         {
             var response = await _mockServer.Client.GetAsync(_url + "/random_id");
             var jsonString = await response.Content.ReadAsStringAsync();
-            var icu = JsonConvert.DeserializeObject<Backend.Models.PatientVitalsModels>(jsonString);
+            var icu = JsonConvert.DeserializeObject<Backend.Models.IcuModel>(jsonString);
             Assert.Null(icu);
         }
         [Fact]

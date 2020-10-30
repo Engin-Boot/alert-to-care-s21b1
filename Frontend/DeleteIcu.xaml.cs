@@ -69,12 +69,15 @@ namespace Frontend
             if(result == "ICU deleted successfully")
             {
                 if(_icuList.Count == 1)
-                {
-                    Application.Current.MainWindow.Content = new IcuConfiguration();
+                { 
+                    var window = Application.Current.MainWindow;
+                    var leftside = window.FindName("LeftSide") as DockPanel;
+                    leftside.Children.Clear();
+                    leftside.Children.Add(new IcuConfiguration());
                 }
                 else
                 {
-                    Application.Current.MainWindow.Content = new MainPage();
+                    LoadMainPage();
                 }
             }
             
@@ -89,7 +92,15 @@ namespace Frontend
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = new MainPage();
+            LoadMainPage();
+        }
+        private void LoadMainPage()
+        {
+
+            var window = Application.Current.MainWindow;
+            var leftside = window.FindName("LeftSide") as DockPanel;
+            leftside.Children.Clear();
+            leftside.Children.Add(new MainPage());
         }
     }
 }

@@ -52,57 +52,13 @@ namespace Frontend
             beds = new BedApiCalls().GetAllBedsFromAnIcu(icuId);
             CreateAndPlaceBeds(icu);
             GetAllPatientsInIcu(icuId);
-            KeepMonitoringVitals();
         }
 
-        public void KeepMonitoringVitals()
-        {
-            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
-            timer1.Tick += new EventHandler(CheckAllVitals);
-            timer1.Interval = 10000; // in miliseconds
-            timer1.Start();
-        }
-
-        public void CheckAllVitals(object sender, EventArgs e)
-        {
-            var patientVitals = new VitalApiCalls().GetAllVitals();
-            if(patientVitals != null)
-            {
-                foreach(var patientVital in patientVitals)
-                {
-                    CheckPatientVitals(patientVital);
-                }
-            }
-        }
-
-        public void CheckPatientVitals(PatientVitalsModel patientVital)
-        {
-            foreach (var vital in patientVital.Vitals)
-            {
-                if (!MonitorVital(vital.Value, vital.Lower, vital.Upper))
-                {
-                    var tempPatient = new PatientApiCalls().GetPatient(patientVital.PatientId);
-                    this.icuComboBox.Text = tempPatient.IcuId;
-
-                    //MessageBox.Show(patientVital.PatientId);
-                    var button = (Button) this.FindName(tempPatient.BedId);
-                    if(button != null)
-                        button.Background = Brushes.Red;
-                    break;
-                }
-            }
-        }
-
-
-        public bool MonitorVital(float value,float lower,float upper)
-        {
-            return value >= lower && value <= upper;
-        }
-
-        public PatientVitalsModels RetrieveIcu(string icuId)
+        
+        public IcuModel RetrieveIcu(string icuId)
         {
             var icu = new IcuApiCalls().GetIcu(icuId);
-            _icuDetails.UpdateIcuDetails(icu);
+            _icuDetails.UpdateIcuDetail(icu);
             return icu;
         }
 
@@ -122,7 +78,7 @@ namespace Frontend
         }
 
 
-        private void CreateAndPlaceBeds(PatientVitalsModels icu)
+        private void CreateAndPlaceBeds(IcuModel icu)
         {
             var index = BedLayoutFunctionCall[icu.Layout].Invoke(icu.MaxBeds);
             var noOfBeds = icu.NoOfBeds;
@@ -155,17 +111,16 @@ namespace Frontend
             var color = Brushes.LightGray;
             if (beds[i].BedOccupancyStatus == "Occupied")
                 color = Brushes.LightGreen;
-            
             Button newBed = new Button
             {
                 Content = beds[i].BedId,
                 Padding = new Thickness(10),
                 FontSize = 15,
-                //Name = beds[i].BedId,
+                Name = beds[i].BedId,
                 Background = color,
                 Margin=new Thickness(5)
             };
-            newBed.SetValue(FrameworkElement.NameProperty, beds[i].BedId);
+            //newBed.SetValue(FrameworkElement.NameProperty, beds[i].BedId);
             newBed.MouseEnter += new MouseEventHandler(MouseOverBed);
             newBed.MouseLeave += new MouseEventHandler(MouseLeaveBed);
             return newBed;
@@ -229,15 +184,17 @@ namespace Frontend
             var btn = sender as Button;
             //MessageBox.Show(btn.Name); // BedId
             if (btn.Content.ToString() == "Add Patient")
-            {
-                
-                Application.Current.MainWindow.Content = new AddNewPatient(icuId.Text.ToString(),btn.Name.ToString());
+            {               
+                var window = Application.Current.MainWindow;
+                var leftside = window.FindName("LeftSide") as DockPanel;
+                leftside.Children.Clear();
+                leftside.Children.Add(new AddNewPatient(icuId.Text.ToString(), btn.Name.ToString()));  
             }
             else
             {
                 var result = new PatientApiCalls().RemovePatient(patients.Find(patient => patient.BedId == btn.Name).PatientId);
                 MessageBox.Show(result);
-                Application.Current.MainWindow.Content = new MainPage();
+                SetUp(icuId.Text.ToString());
             }
         }
 

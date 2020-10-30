@@ -80,7 +80,7 @@ namespace Backend.Utility
             
         }
 
-        public bool IsIcuEligibleToBeAdded(Models.PatientVitalsModels icu)
+        public bool IsIcuEligibleToBeAdded(Models.IcuModel icu)
         {
 
             if (_icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempIcu => tempIcu.IcuId == icu.IcuId)!=null) 
@@ -120,7 +120,7 @@ namespace Backend.Utility
             return false;
         }
 
-        private bool ValidateBeds(Models.PatientVitalsModels icu)
+        private bool ValidateBeds(Models.IcuModel icu)
         {
             if (icu.MaxBeds != 0 && CheckBedsCriteria(icu))  // check layout with BedId
             {
@@ -129,7 +129,7 @@ namespace Backend.Utility
             return false;
         }
 
-        private bool CheckBedsCriteria(Models.PatientVitalsModels icu)
+        private bool CheckBedsCriteria(Models.IcuModel icu)
         {
             if (icu.NoOfBeds>=0 && icu.NoOfBeds <= icu.MaxBeds)  // check layout with BedId
             {
@@ -147,7 +147,7 @@ namespace Backend.Utility
 
         public  string GenerateBedId(string id)
         {
-            Models.PatientVitalsModels icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempicu => tempicu.IcuId == id);
+            Models.IcuModel icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempicu => tempicu.IcuId == id);
             if (icu != null)
             {
                 string temp;

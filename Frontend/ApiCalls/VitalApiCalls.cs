@@ -4,8 +4,6 @@ using System.Net;
 using Backend.Models;
 using System.IO;
 using Newtonsoft.Json;
-using System.Windows.Documents;
-using System.Linq;
 
 
 namespace Frontend.ApiCalls

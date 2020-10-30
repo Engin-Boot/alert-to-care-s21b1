@@ -2,7 +2,7 @@
 
 namespace Backend.Models
 {
-    public class PatientVitalsModels
+    public class IcuModel
     {
         public string IcuId { get; set; }
         public string Layout { get; set; }
