@@ -6,9 +6,9 @@ namespace Backend.Utility
         private readonly IcuDataHandler _icuDataHandler = new IcuDataHandler();
         private readonly PatientDataHandler _patientDataHandler = new PatientDataHandler();
         private readonly BedDataHandler _bedDataHandler = new BedDataHandler();
-        private readonly string _icuDataCsvPath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
-        private readonly string _patientDataCsvPath = @"Da\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
-        private readonly string _bedDataCsvPath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
+        private readonly string _icuDataCsvPath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Icus.csv";
+        private readonly string _patientDataCsvPath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
+        private readonly string _bedDataCsvPath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Beds.csv";
 
         public void ChangeBedStatusToOccupied(string bedId)
         {
@@ -80,7 +80,7 @@ namespace Backend.Utility
             
         }
 
-        public bool IsIcuEligibleToBeAdded(Models.IcuModel icu)
+        public bool IsIcuEligibleToBeAdded(Models.PatientVitalsModels icu)
         {
 
             if (_icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempIcu => tempIcu.IcuId == icu.IcuId)!=null) 
@@ -120,7 +120,7 @@ namespace Backend.Utility
             return false;
         }
 
-        private bool ValidateBeds(Models.IcuModel icu)
+        private bool ValidateBeds(Models.PatientVitalsModels icu)
         {
             if (icu.MaxBeds != 0 && CheckBedsCriteria(icu))  // check layout with BedId
             {
@@ -129,7 +129,7 @@ namespace Backend.Utility
             return false;
         }
 
-        private bool CheckBedsCriteria(Models.IcuModel icu)
+        private bool CheckBedsCriteria(Models.PatientVitalsModels icu)
         {
             if (icu.NoOfBeds>=0 && icu.NoOfBeds <= icu.MaxBeds)  // check layout with BedId
             {
@@ -147,7 +147,7 @@ namespace Backend.Utility
 
         public  string GenerateBedId(string id)
         {
-            Models.IcuModel icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempicu => tempicu.IcuId == id);
+            Models.PatientVitalsModels icu = _icuDataHandler.ReadIcus(_icuDataCsvPath).Find(tempicu => tempicu.IcuId == id);
             if (icu != null)
             {
                 string temp;

@@ -8,7 +8,7 @@ namespace Backend.Utility
 {
     public class VitalsHelper
     {
-        private readonly string _csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Vitals.csv";
+        private readonly string _csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Vitals.csv";
         private readonly VitalsDataHandler _vitalsDataHandler = new VitalsDataHandler();
         public static readonly List<VitalsModel> _vitalNames = new List<VitalsModel>()
         {

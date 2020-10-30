@@ -22,7 +22,7 @@ namespace Frontend
     /// </summary>
     public partial class AllIcus : UserControl
     {
-        private ObservableCollection<IcuModel> icuList = new ObservableCollection<IcuModel>();
+        private ObservableCollection<PatientVitalsModels> icuList = new ObservableCollection<PatientVitalsModels>();
         public AllIcus()
         {
             InitializeComponent();

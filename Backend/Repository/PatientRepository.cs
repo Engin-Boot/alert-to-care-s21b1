@@ -12,7 +12,7 @@ namespace Backend.Repository
         private readonly Utility.Helpers _helpers = new Utility.Helpers();
         public PatientRepository()
         {
-            this._csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
+            this._csvFilePath = @"C:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
         }
         public IEnumerable<Models.PatientModel> GetAllPatients()
         {

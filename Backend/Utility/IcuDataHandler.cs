@@ -11,20 +11,20 @@ namespace Backend.Utility
         {
             _csvHandler = new CsvHandler();
         }
-        public List<Models.IcuModel> ReadIcus(string filepath)
+        public List<Models.PatientVitalsModels> ReadIcus(string filepath)
         {
             List<string> details = _csvHandler.ReadDetailsFromFile(filepath);
-            List<Models.IcuModel> allIcus = new List<Models.IcuModel>();
+            List<Models.PatientVitalsModels> allIcus = new List<Models.PatientVitalsModels>();
             foreach (var line in details)
             {
                 allIcus.Add(FormatStringToIcuObject(line.Split(',')));
             }
             return allIcus;
         }
-        private Models.IcuModel FormatStringToIcuObject(string[] icuDetails)
+        private Models.PatientVitalsModels FormatStringToIcuObject(string[] icuDetails)
         {
 
-            Models.IcuModel icu = new Models.IcuModel()
+            Models.PatientVitalsModels icu = new Models.PatientVitalsModels()
             {
                 IcuId = icuDetails[0],
                 Layout = icuDetails[1],
@@ -35,12 +35,12 @@ namespace Backend.Utility
             return icu;
         }
 
-        public bool WriteIcu(Models.IcuModel icu, string filepath)
+        public bool WriteIcu(Models.PatientVitalsModels icu, string filepath)
         {
             string icuDetails = FormatIcuObjectToString(icu);
             return _csvHandler.WriteToFile(icuDetails, filepath);
         }
-        private string FormatIcuObjectToString(Models.IcuModel icu)
+        private string FormatIcuObjectToString(Models.PatientVitalsModels icu)
         {
             var csvFormatData = "";
             if (icu.IcuId != null)

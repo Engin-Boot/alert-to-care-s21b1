@@ -40,7 +40,7 @@ namespace Frontend
         private  void NextButton_Click(object sender, RoutedEventArgs e)
         {
             
-            var icu = new Backend.Models.IcuModel()
+            var icu = new Backend.Models.PatientVitalsModels()
             {
                 IcuId = layoutModel.IcuId,
                 NoOfBeds = 0,
