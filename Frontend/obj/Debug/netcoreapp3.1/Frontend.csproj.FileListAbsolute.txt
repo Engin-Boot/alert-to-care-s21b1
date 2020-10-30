@@ -223,4 +223,3 @@ C:\Users\ALIRAZA\Documents\GitHub\alert-to-care-s21b1New\Frontend\obj\Debug\netc
 C:\Users\ALIRAZA\Documents\GitHub\alert-to-care-s21b1New\Frontend\obj\Debug\netcoreapp3.1\Frontend.pdb
 C:\Users\ALIRAZA\Documents\GitHub\alert-to-care-s21b1New\Frontend\obj\Debug\netcoreapp3.1\Frontend.genruntimeconfig.cache
 C:\Users\ALIRAZA\Documents\GitHub\alert-to-care-s21b1New\Frontend\obj\Debug\netcoreapp3.1\Frontend.csproj.ResolveComReference.cache
-E:\BootCamp\New\Frontend\obj\Debug\netcoreapp3.1\Frontend.csproj.ResolveComReference.cache
