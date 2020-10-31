@@ -59,7 +59,8 @@ namespace Backend.Utility
                 vitalString += vital.Lower.ToString(CultureInfo.CurrentCulture) + " ";
                 vitalString += vital.Upper.ToString(CultureInfo.CurrentCulture) + ",";
             }
-            vitalString.Trim(',');
+            vitalString = vitalString.Remove(vitalString.Length - 1);
+            //vitalString.Trim(',');
             //vitalString = vitalString[0..^1];
 
             var csvData = patientVitals.PatientId + ",";
