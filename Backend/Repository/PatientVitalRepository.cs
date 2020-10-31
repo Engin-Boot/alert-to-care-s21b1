@@ -23,7 +23,7 @@ namespace Backend.Repository
         {
             var list = _vitalsDataHandler.ReadVitals(_csvFilePath);
             var temp = list.FindAll(vitals => vitals.PatientId == patientId);
-            if (temp != null && temp.Any())
+            if (temp.Any())
             {
                 return temp[0].Vitals;
             }
