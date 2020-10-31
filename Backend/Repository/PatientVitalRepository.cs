@@ -2,7 +2,7 @@
 using Backend.Utility;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Backend.Repository
 {
@@ -22,10 +22,10 @@ namespace Backend.Repository
         public List<VitalsModel> ReadPatientVitals(string patientId)
         {
             var list = _vitalsDataHandler.ReadVitals(_csvFilePath);
-            var temp = list.Find(vitals => vitals.PatientId == patientId).Vitals;
-            if (temp != null)
+            var temp = list.FindAll(vitals => vitals.PatientId == patientId);
+            if (temp != null && temp.Any())
             {
-                return temp;
+                return temp[0].Vitals;
             }
             return new List<VitalsModel>();
         }
