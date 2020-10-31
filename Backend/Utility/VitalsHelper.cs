@@ -51,16 +51,9 @@ namespace Backend.Utility
             isUpdated &= _vitalsDataHandler.WriteVitals(patientVitals, _csvFilePath);
             return isUpdated;
         }
-        public void AssertVitalsUpdate(PatientVitalsModel patientVitals)
+        private void AssertVitalsUpdate(PatientVitalsModel patientVitals)
         {
-            if (UpdatePatientVitals(patientVitals)) 
-            {
-                Console.WriteLine("Vitals Updated");
-            }
-            else
-            {
-                Console.WriteLine("Vitals not updated");
-            }
+            Console.WriteLine((UpdatePatientVitals(patientVitals)) ? "Vitals Updated" : "Vitals Not updated");
         }
         public void UpdateVitalsRegularly()
         {

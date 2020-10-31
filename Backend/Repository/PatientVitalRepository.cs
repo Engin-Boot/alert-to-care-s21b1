@@ -21,9 +21,13 @@ namespace Backend.Repository
         }
         public List<VitalsModel> ReadPatientVitals(string patientId)
         {
-            var list = new List<VitalsModel>();
-            list = _vitalsDataHandler.ReadVitals(_csvFilePath).Find(vitals => vitals.PatientId == patientId).Vitals;
-            return list;
+            var list = _vitalsDataHandler.ReadVitals(_csvFilePath);
+            var temp = list.Find(vitals => vitals.PatientId == patientId).Vitals;
+            if (temp != null)
+            {
+                return temp;
+            }
+            return new List<VitalsModel>();
         }
         public void WriteVitals(PatientVitalsModel patientVitals)
         {
@@ -36,6 +40,8 @@ namespace Backend.Repository
         public void StartUpdate()
         {
             var timer = new System.Threading.Timer(e => new VitalsHelper().UpdateVitalsRegularly(), null, TimeSpan.Zero, TimeSpan.FromSeconds(10));
+            timer.Change(0, 10);
         }
     }
 }
+

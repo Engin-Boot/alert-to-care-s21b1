@@ -8,7 +8,7 @@ namespace Backend.Repository
     public class PatientRepository : IPatientRepository
     {
         private readonly string _csvFilePath;
-        private readonly PatientDataHandler _patientDataHandler = new Utility.PatientDataHandler();
+        private readonly PatientDataHandler _patientDataHandler = new PatientDataHandler();
         private readonly Helpers _helpers = new Helpers();
         public PatientRepository()
         {
