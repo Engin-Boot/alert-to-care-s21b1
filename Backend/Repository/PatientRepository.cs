@@ -8,18 +8,18 @@ namespace Backend.Repository
     public class PatientRepository : IPatientRepository
     {
         private readonly string _csvFilePath;
-        private readonly Utility.PatientDataHandler _patientDataHandler = new Utility.PatientDataHandler();
-        private readonly Utility.Helpers _helpers = new Utility.Helpers();
+        private readonly PatientDataHandler _patientDataHandler = new Utility.PatientDataHandler();
+        private readonly Helpers _helpers = new Helpers();
         public PatientRepository()
         {
             this._csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Patients.csv";
         }
-        public IEnumerable<Models.PatientModel> GetAllPatients()
+        public IEnumerable<PatientModel> GetAllPatients()
         {
             return _patientDataHandler.ReadPatients(_csvFilePath);
         }
 
-        public bool AddPatient(Models.PatientModel newPatient)
+        public bool AddPatient(PatientModel newPatient)
         {
             bool isAdded = false;
             string message = "";
@@ -31,7 +31,7 @@ namespace Backend.Repository
                     var patientVitals = new PatientVitalsModel()
                     {
                         PatientId = newPatient.PatientId,
-                        Vitals = VitalsHelper._vitalNames
+                        Vitals = VitalsHelper.VitalNames
                     };
                     new PatientVitalRepository().WriteVitals(patientVitals);
                     _helpers.ChangeBedStatusToOccupied(newPatient.BedId);
@@ -67,7 +67,7 @@ namespace Backend.Repository
             return isDischarged;
         }
 
-        public Models.PatientModel GetPatient(string patientId)
+        public PatientModel GetPatient(string patientId)
         {
             return _patientDataHandler.ReadPatients(_csvFilePath).Find(patient => patient.PatientId == patientId);
         }

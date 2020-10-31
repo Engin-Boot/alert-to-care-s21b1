@@ -2,9 +2,7 @@
 using Backend.Utility;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
+
 
 namespace Backend.Repository
 {
@@ -23,20 +21,21 @@ namespace Backend.Repository
         }
         public List<VitalsModel> ReadPatientVitals(string patientId)
         {
-            return _vitalsDataHandler.ReadVitals(_csvFilePath).Find(vitals => vitals.PatientId == patientId).Vitals;
+            var list = new List<VitalsModel>();
+            list = _vitalsDataHandler.ReadVitals(_csvFilePath).Find(vitals => vitals.PatientId == patientId).Vitals;
+            return list;
         }
-        public bool WriteVitals(PatientVitalsModel patientVitals)
+        public void WriteVitals(PatientVitalsModel patientVitals)
         {
-            return _vitalsDataHandler.WriteVitals(patientVitals, _csvFilePath);
+             _vitalsDataHandler.WriteVitals(patientVitals, _csvFilePath);
         }
-        public bool DeletePatientVitals(string patientId)
+        public void DeletePatientVitals(string patientId)
         {
-            return _vitalsDataHandler.DeletePatientVitals(patientId, _csvFilePath);
+            _vitalsDataHandler.DeletePatientVitals(patientId, _csvFilePath);
         }
         public void StartUpdate()
         {
-            new System.Threading.Timer(e => new VitalsHelper().UpdateVitalsRegularly(), null, TimeSpan.Zero, TimeSpan.FromSeconds(10));
-            
+            var timer = new System.Threading.Timer(e => new VitalsHelper().UpdateVitalsRegularly(), null, TimeSpan.Zero, TimeSpan.FromSeconds(10));
         }
     }
 }

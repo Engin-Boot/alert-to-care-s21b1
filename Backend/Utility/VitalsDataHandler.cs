@@ -1,9 +1,6 @@
 ﻿using Backend.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Backend.Utility
 {
@@ -14,7 +11,7 @@ namespace Backend.Utility
         {
             _csvHandler = new CsvHandler();
         }
-        public List<Models.PatientVitalsModel> ReadVitals(string filepath)
+        public List<PatientVitalsModel> ReadVitals(string filepath)
         {
             List<string> csvData = _csvHandler.ReadDetailsFromFile(filepath);
             var vitals = new List<PatientVitalsModel>();
@@ -39,12 +36,12 @@ namespace Backend.Utility
                 };
                 vitalsList.Add(tempVital);
             }
-            var _patientVitals = new PatientVitalsModel()
+            var patientVitals = new PatientVitalsModel()
             {
                 PatientId = values[0],
                 Vitals = vitalsList
             };
-            return _patientVitals;
+            return patientVitals;
         }
 
         public bool WriteVitals(PatientVitalsModel patientVitals, string filepath)
@@ -54,15 +51,16 @@ namespace Backend.Utility
         private string FormatPatientVitalsModelToString(PatientVitalsModel patientVitals)
         {
 
-            string vitalString = "";
+            var vitalString ="";
             foreach(var vital in patientVitals.Vitals)
             {
                 vitalString += vital.VitalName + " ";
-                vitalString += vital.Value.ToString() + " ";
-                vitalString += vital.Lower.ToString() + " ";
-                vitalString += vital.Upper.ToString() + ",";
+                vitalString += vital.Value.ToString(CultureInfo.CurrentCulture) + " ";
+                vitalString += vital.Lower.ToString(CultureInfo.CurrentCulture) + " ";
+                vitalString += vital.Upper.ToString(CultureInfo.CurrentCulture) + ",";
             }
-            vitalString = vitalString[0..^1];
+            vitalString.Trim(',');
+            //vitalString = vitalString[0..^1];
 
             var csvData = patientVitals.PatientId + ",";
             csvData += vitalString;

@@ -1,8 +1,7 @@
 ﻿using Backend.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Backend.Utility
 {
@@ -10,7 +9,7 @@ namespace Backend.Utility
     {
         private readonly string _csvFilePath = @"D:\a\alert-to-care-s21b1\alert-to-care-s21b1\Backend\Vitals.csv";
         private readonly VitalsDataHandler _vitalsDataHandler = new VitalsDataHandler();
-        public static readonly List<VitalsModel> _vitalNames = new List<VitalsModel>()
+        public static readonly List<VitalsModel> VitalNames = new List<VitalsModel>()
         {
             new VitalsModel()
             {
@@ -52,6 +51,17 @@ namespace Backend.Utility
             isUpdated &= _vitalsDataHandler.WriteVitals(patientVitals, _csvFilePath);
             return isUpdated;
         }
+        public void AssertVitalsUpdate(PatientVitalsModel patientVitals)
+        {
+            if (UpdatePatientVitals(patientVitals)) 
+            {
+                Console.WriteLine("Vitals Updated");
+            }
+            else
+            {
+                Console.WriteLine("Vitals not updated");
+            }
+        }
         public void UpdateVitalsRegularly()
         {
             var allVitals = _vitalsDataHandler.ReadVitals(_csvFilePath);
@@ -62,7 +72,8 @@ namespace Backend.Utility
                     vital.Value = GenerateRandomNumber(vital.Lower, vital.Upper);
                     Console.WriteLine(vital.Value);
                 }
-                UpdatePatientVitals(patientVitals);
+                //Console.WriteLine(UpdatePatientVitals(patientVitals));
+                AssertVitalsUpdate(patientVitals);
             }
         }
     }
