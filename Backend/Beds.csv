@@ -1,8 +1,9 @@
-TestIC1L03,TestIC1,Free,not specified
 TestIC1L04,TestIC1,Free,not specified
 TestIC1L02,TestIC1,Occupied,not specified
 IC1U01,IC1,Free,FirstFromTop
 IC1U02,IC1,Free,FirstFromTop
-IC2L01,IC2,Occupied,not specified
 IC1U03,IC1,Free,FirstFromTop
+IC1U04,IC1,Free,FirstFromTop
+IC1U05,IC1,Free,FirstFromTop
+IC1U06,IC1,Free,FirstFromTop
 IC2L01,IC2,Free,not specified
