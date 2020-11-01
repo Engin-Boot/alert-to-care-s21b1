@@ -16,36 +16,26 @@ namespace Backend.Repository
         }
         public bool AddBed(string icuId, string locationOfBed = "not specified")
         {
-            string message = "";
             bool isAdded = false;
-            try
+            if (_helpers.IsEmptySlotAvailableToAddBed(icuId, out _))
             {
-                // validation.
-                if (_helpers.IsEmptySlotAvailableToAddBed(icuId, out message))
+                //var icu = new Occupancy.OccupancyServices().GetIcu(icuId));
+                var bedId = _helpers.GenerateBedId(icuId);
+                var bed = new Models.BedModel()
                 {
-                    //var icu = new Occupancy.OccupancyServices().GetIcu(icuId));
-                    var bedId = _helpers.GenerateBedId(icuId);
-                    var bed = new Models.BedModel()
-                    {
-                        BedId = bedId,
-                        IcuId = icuId,
-                        BedOccupancyStatus = "Free",
-                        Location = locationOfBed
-                    };
-                    isAdded = _bedDataHandler.WriteBed(bed, _csvFilePath);
-                    if (isAdded)
-                    {
-                        _helpers.IncrementNoOfBedsOfIcu(icuId);
-                        _helpers.IncrementBedCounterInIcu(icuId);
-                    }
+                    BedId = bedId,
+                    IcuId = icuId,
+                    BedOccupancyStatus = "Free",
+                    Location = locationOfBed
+                };
+                isAdded = _bedDataHandler.WriteBed(bed, _csvFilePath);
+                if (isAdded)
+                {
+                    _helpers.IncrementNoOfBedsOfIcu(icuId);
+                    _helpers.IncrementBedCounterInIcu(icuId);
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(message);
-                Console.WriteLine(e.StackTrace);
-                isAdded = false;
-            }
+            
             return isAdded;
         }
 

@@ -85,22 +85,34 @@ namespace Frontend
             V1StackPanel.Children.Clear();
             HStackPanel.Children.Clear();
             V2StackPanel.Children.Clear();
-            
-            //var index = UBedLayout(BedList);
-            for (int i=0; i < index[0] && i < noOfBeds ; i++)
+
+            CreateV1StackPanel(index, noOfBeds);
+            index[1] = index[1] + index[0];
+            CreateHStackPanel(index, noOfBeds);
+            index[2] = index[2] + index[1];
+            CreateV2StackPanel(index, noOfBeds);
+        }
+
+        public void CreateV1StackPanel(List<int> index,int noOfBeds)
+        {
+            for (int i = 0; i < index[0] && i < noOfBeds; i++)
             {
-                
+
                 V1StackPanel.Children.Add(CreateSingleBed(i));
             }
 
-            index[1] = index[1] + index[0];
+        }
+
+        public void CreateHStackPanel(List<int> index, int noOfBeds)
+        {
             for (int i = index[0]; i < index[1] && i < noOfBeds; i++)
             {
                 HStackPanel.Children.Add(CreateSingleBed(i));
             }
-
-            index[2] = index[2] + index[1];
-            for (int i = index[1] ; i < index[2] && i < noOfBeds; i++)
+        }
+        public void CreateV2StackPanel(List<int> index, int noOfBeds)
+        {
+            for (int i = index[1]; i < index[2] && i < noOfBeds; i++)
             {
                 V2StackPanel.Children.Add(CreateSingleBed(i));
             }

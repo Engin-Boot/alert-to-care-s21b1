@@ -17,15 +17,20 @@ namespace Frontend.Validations
             {
                 return new ValidationResult(false, "Input has to be a number");
             }
-            else if(input>18 || input <= 0)
+            else
+            {
+                return CheckInputRange(input);
+            }
+        }
+
+        private ValidationResult CheckInputRange(int input)
+        {
+            if (input > 18 || input <= 0)
             {
                 return new ValidationResult(false, "Input has to be a between 1 and 18");
             }
 
-            else
-            {
-                return new ValidationResult(true, "");
-            }
+            return new ValidationResult(true, "");
         }
     }
 }
